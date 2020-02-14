@@ -1,0 +1,233 @@
+---
+output:
+  bookdown::pdf_document2:
+    toc: false
+    keep_tex: false
+    fig_caption: yes
+title: "SOEP_info"
+author: Rocco Paolillo
+bibliography: "references.bib"
+link-citations: yes
+# csl: apa.csl # by default: Chicago style
+header-includes:
+- \usepackage{float}
+- \usepackage{multirow}
+- \usepackage{xcolor} 
+- \usepackage{graphicx} 
+- \usepackage{cite}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.lp="fig:")
+#install.packages("bibtex")
+
+# install.packages("tinytex", repos = "https://cloud.r-project.org" ) if debug needed?
+
+# library(namelibrary) for the R library
+
+# http://rmarkdown.rstudio.com
+# echo = TRUE <- makes all next cmds appear
+
+```
+\newcommand{\rocco}[1]{\textcolor{red}{{Rocco:}#1}} <!-- command to appear in pdf -->
+
+(ref:topic) @soep_topic
+(ref:sample) @soep_sample
+(ref:struct) @soep_struct
+(ref:ret) Retrieved from
+
+SOEP (German Socio-Economic Panel): representative household panel survey of the non-istitutionalized resident population in Gemrnay [@longhi2014], hosted by German Institute for Economic Research (DIW Berlin) [@goebel2019].
+Surveyed yearly around 15,000 households and 30,000 individuals [@soep_comp] 
+
+Possible strategy below.
+
+# History
+
+* 1984: West Germany  [@longhi2014]
+* subsample A: non-ethnic household heads (German origin) subsample B: Turkish, Greek, Yugoslavian, Spanish or Italian household heads [@longhi2014]
+* 1990: 
+  - East German Democratic Republic was added  [@longhi2014]
+  - subsample C: non-ethnic households  [@longhi2014], n. 2,179 after the renunification [@goebel2019]
+* 1994/1995:subsample D: ethnic Germans after Soviet collapse (n. 531) [@goebel2019]
+* 1998: subsample E: refreshment sample (samples added randomly over time)  [@longhi2014]
+* 2002: subsample G: high-income earners  [@longhi2014]
+* 2000: innovation sample (blends design A and E)[@longhi2014]
+* 2009: innovation sample [@soep_sample]
+* 2011-2012: refreshment
+* 2010: low-income family
+* 2011: single-parent family
+* 2012: SOEP-IS [@goebel2019] (deadline Nov. 30, some days to full Dec. 31)
+* 2013: migration 1995-2010 sample M1
+* 2015: migration 2009-2013 M2
+* 2016: refugee of years 2013-2015, M3/M4 including Syria, M5  immigration in 2016
+
+For summary of funding, history and sampling see @goebel2019.
+
+"Data from scientists for scientists" [@goebel2019, 351].
+For studies using SOEP check @siedler2008
+
+
+# Method Analysis
+
+Useful links:\
+[time-series](https://bookdown.org/ccolonescu/RPoE4/time-series-nonstationarity.html#spurious-regression)
+R package: mclogit
+[choice regression](https://onlinepubs.trb.org/onlinepubs/nchrp/cd-22/v2chapter5.html)
+```{r cover,fig.align='center',out.width='90%',fig.cap="Clusters of topics. (ref:ret) (ref:topic)."}
+knitr::include_graphics("soep_topic.jpg")
+```
+
+```{r composition,fig.align='center',out.width='90%',fig.cap="Composition of SOEP over time. (ref:ret) (ref:sample)."}
+knitr::include_graphics("soep_composition.jpg")
+```
+
+
+
+# Procedure
+
+* All people in the household are eligible of personal interview, prospectively and retrospectively on employment, partnership and fertility histories etc.  [@longhi2014]
+* *active panel*: set of repondents  in a particular year, considering refresher samples to keep the sample representative of German population (demographic inflows) [@soep_sample]
+* Reason to leave:
+  - death, moving abroad
+  - attritors: definitive final refusal
+* *active panel*:
+  * information on household: asked the household head [@longhi2014;@soep_sample;@soep_quest]
+    + individual questionnaire - pl dataset
+    + household questionnaire - hl dataset
+  * proxy information:
+    + children below 10 years
+    + person deceased for their last period
+  * personal interview:
+    + age 11+ : interviewed themselves if parent consent
+    + adults : interviewed themselves
+* People who participated in the first wave and descendants are asked to participate as long as they live in Germany.  [@longhi2014]
+* yearly, some topics even more than one year. Not all topic every year [@soep_topic]
+* only random probability sample: at national level sample points sampled by federal state and municipality level, then stratfied by locals and migrants. Use of weights see [@goebel2019] (see weights in @longhi2014)
+
+Collaboration IAB-SOEP-MIG for migration-specific sample and in-depth knowledge of work assimilation, but 2013 and 2015 [@goebel2019]
+
+# Structure
+
+Family of studies [@soep_intro]:
+
+* CORE
+* Innovation sample SOEP-IS: from "Innovation" and "Innovation and Incentivisation", accepting ideas from people outside DIW, with an exclusive usage of data for one year
+* Related Studies SOEP-RS: other ventures that can be used for comparison (e.g. BASE II for elder people). FiD: Evaluation of family policies in Germany, part of SOEP from v31  [@goebel2019]. 
+
+Levels:
+
+* individual level: members of family +16 years, life-course event approach from "cradle grave"
+* household level
+* regional data with local information: privacy, contract and specific institution
+
+Dataset:
+
+* pl: individual questionnaire on civil participation, lifestyle and work...
+* hl: household info, can contain info on education/activities of young people born before 2002
+* biol: first time: present life up to present day
+* bioparent: first time: info on their parents
+* bioagel (proxy questions under 10 asked to parents):
+  + A first after childbirth for mother, related to nurtiring etc.
+  + B after the child is 2 to 3 years for mother, ability of child etc.
+  + C child 5 to 6 years for mother, ability of child etc.
+  + D child 7 to 8 both parents parenting goals, child aspiration and achievement
+  + E child 9 to 10 by mother, education and leisure time of child
+* biopupil, children born on 2002 or later:
+  + 11-12 first when aged 11: friends and social network
+  + 13-14 early youth, idem + what allowed to do alone and political interests
+* jugendl: until 17 y/o, introduced in 2001: youth questionnaire, personality, social networks, side jobs etc.
+\par
+  older than 17 y/o: as for all adults
+* plueckel (adults + 17 yo): for the years they did not take part
+* abroad: 2008-2010 and 2013-2014: Germans who moved abroad, while they were abroad. Only these years
+* vpl: on the person that passed away
+
+For general info/questions: **[data_documentation](www.diw.de/en/diw_02.c.238114.en/questionnaires_fieldwork_documents.html)** and **[paneldata.org](https://paneldata.org/)** (for variable) and **[companion_soep](http://companion.soep.de/)**
+
+Check for visiting grants http://www.inclusivegrowth.eu/visiting-grants
+
+Data Structure and Naming Conventions [@soep_struct]:
+
+* name of datasets: combination of unit, type, format, questionnaires or module
+  + Unit
+    + h*: household level
+    + p*: individual level
+  + Type of data
+    + tracking: survey units, good to identify the research population. *brutto: who did not provide interview
+    + original: unprocess info from interview
+    + generated: *gen, improved quality, pequiv: armonized for international comparison.
+    + biography: generated dataset from biological perspective (life course): bio*. All at individual level
+    + survey: household
+
+* Dataset Format [@soep_struct]:
+  + Wide Format: ppath, phrf, hpath, hhrf. One row per survey unit
+  + Long Format: biogrpahical dataset, *l, person-year combination (see @field2012)
+  + Spell format: spells for event-history analysis, marriage and couple
+  
+SOEPlong format provides the info pooled and harmonized (e.g. income prior to 2001 in Euros)
+
+* Data Name:
+  + Long format and not generated: DVTxxxx see Fig.\ref{fig:datname}
+    + D: dataset identifier: p:person, h:household, l:bibliography, j:youth
+    + V: variable identifier: l: numeric, a:alphanumeric
+    + T: topic identifier
+    + xxx: digit
+    + _v/_h: versioning or harmined
+  + Generated variables: intuitive names. See Fig.\ref{fig:soepmiss} for missing values
+
+* Specific:
+  + lela: retrospective biography information
+
+* SOEP-Core:
+  + files on development of sample
+  + generate data
+  + orginally surveyed data
+  + biography prior to the study (biol?)
+  
+  
+  
+```{r datname,fig.align='center',out.width='90%',fig.cap="Structure of variable name. (ref:ret) (ref:struct)."}
+knitr::include_graphics("soep_name.jpg")
+```
+
+```{r soepmiss,fig.align='center',out.width='90%',fig.cap="Coding for missing values. (ref:ret) (ref:struct)."}
+knitr::include_graphics("soep_missing.jpg")
+```
+
+Data Identifiers and Pointers [@soep_ident] 
+
+* Identifiers: identify unit surveys (households and individuals) so to let you connect them for nested analysis (individual $\leftrightarrow$ household):
+  + HID: household, CID: first house where they lived
+  + PID: person
+  + All dataset individual level have both HID + PID + syear for panel data
+  + INTID: interviewer
+  + VPID: deceased person (whose info the participant give) 
+  
+* Pointers: combine information on different persons, link the PID to other people in the dataset:
+  + PARID ppathl: partner in the year
+  + KIDNRxx biobirth: identify the kids, points the mother to the children, assuming biological mother and that partner of mother can change (and father is one partner of the mother)
+  + underage children: K_PMUM kidl child $\rightarrow$ mother, K_PMUMP kidl child $\rightarrow$ partner of the mother
+  + adults (+ 17 yo): participant ID $\rightarrow$ parent: bioparen MNR:mother, FNR:partner of mother
+  + to siblings: SIBPNRxx biosib
+  + to twins: PNR-twin/trip/quad
+  
+You will always merge datasets on the shape:\par
+$Main Dataset (ID-y dep.) + Auxiliary Dataset (Pointer-x ind.)= Merged dataset by ID-Pointer$
+
+# Strategy
+
+Possible strategies will be to identify attitude variables PID of house holder to link with household level HID. To check if at HID  there are info on neighborhood of HID (reported by house holder), or check regional data we have. CID in next steps to trace change in residential choice through generations. Comparing PID level between generations (Identifier for parents) to study change in preferences/values and CID level - HID level (original household - current household) for change of neighborhood through generations 
+
+## Variables
+
+**[companion_soep](http://companion.soep.de/)**, annually: all years, otherwise it is reported
+
+
+Neighborhood: Home Amenities > neighborhood amenities, 
+    
+Individual: Attitudes, Values, Personality > political orientation
+
+http://www.statistik-bremen.de/soev/statwizard_step1.cfm
+
+# References
