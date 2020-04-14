@@ -1,3 +1,3 @@
-Analysis of relocation preference with discrete choice
+Testing random utility discrete choice for housing location. UK census Brent
 
 This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No 713639.
