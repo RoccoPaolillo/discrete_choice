@@ -1,0 +1,178 @@
+---
+title: "Multinomial Logistic Regression Brent"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(plyr)
+library(readxl)
+library(tidyverse)
+library(epiR)
+library(ggplot2)
+library(gdata)
+library(nnet)
+library(reshape2)
+library(pander)
+memory.limit(size = 200000)
+
+
+
+# UK Geographies: https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography#output-area-oa
+# UK Geographies: http://infuse.ukdataservice.ac.uk/help/definitions/2011geographies/index.html 
+
+# acquiring data (name row variable changed in csv (original Ist row here removed))
+wd <- setwd("C:/Users/rocpa/OneDrive/Desktop/brent3")
+data <- read.csv("brent3.csv",sep = ";",skip = 1)
+data$GEO_LABEL <- factor(data$GEO_LABEL)
+
+# aggregate (sum) to have  ethnicityXses, 3 level each. Ses aggregated as UK census lines (high ses = 1+2; medium ses = 3+4+5, low ses = 6+7 )
+
+data$w_hs <- data$w_1 + data$w_2
+data$b_hs <- data$b_1 + data$b_2
+data$a_hs <- data$a_1 + data$a_2
+
+data$w_ms <- data$w_3 + data$w_4 + data$w_5
+data$b_ms <- data$b_3 + data$b_4 + data$b_5
+data$a_ms <- data$a_3 + data$a_4 + data$a_5
+
+data$w_ls <- data$w_6 + data$w_7
+data$b_ls <- data$b_6 + data$b_7
+data$a_ls <- data$a_6 + data$a_7
+
+# tot ethnicity (aggegate social class with same ethnicity)
+
+data$w <- data$w_1 + data$w_2 + data$w_3 + data$w_4 + data$w_5 + data$w_6 + data$w_7
+data$b <- data$b_1 + data$b_2 + data$b_3 + data$b_4 + data$b_5 + data$b_6 + data$b_7
+data$a <- data$a_1 + data$a_2 + data$a_3 + data$a_4 + data$a_5 + data$a_6 + data$a_7
+
+# tot ses (aggregate ethnicities with same ses)
+
+data$h <- data$w_hs + data$b_hs + data$a_hs
+data$m <- data$w_ms + data$b_ms + data$a_ms
+data$l <- data$w_ls + data$b_ls + data$a_ls
+
+# here total population
+
+data$tot <- data$w + data$b + data$a
+
+# computing ethnic concentration
+
+data$frac_white <- data$w/data$tot #round(data$w/data$tot, digits = 2)
+data$frac_black <- data$b/data$tot #round(data$b/data$tot, digits = 2)
+data$frac_asian <- data$a/data$tot #round(data$a/data$tot, digits = 2)
+data$tot_frac <- data$frac_white + data$frac_black + data$frac_asian  # total to check = 1
+
+# computing ses concentration
+
+data$frac_high <- data$h/data$tot
+data$frac_med  <- data$m/data$tot
+data$frac_low  <- data$l/data$tot
+data$tot_class <- data$h/data$tot + data$m/data$tot + data$l/data$tot # total to check = 1
+
+# computing entropy index Simpson
+
+data$ethdiv <-  1 - ( ((data$w * (data$w - 1)) + (data$b * (data$b - 1)) + (data$a * (data$a - 1))) / (data$tot * (data$tot - 1))  )
+data$sesdiv <- 1 - ( ((data$h * (data$h - 1)) + (data$m * (data$m - 1)) + (data$l * (data$l - 1))) / (data$tot * (data$tot - 1))  )
+
+# sum(data$tot) to check the sum of total = number observation final dataset (Brent002 in private)
+
+# factor for each category
+
+# repl <- function(x,y,z){
+# within(x,{
+# y <- NA
+# y[z >= 0.000 & z <= 0.109] <- "0-10"
+# y[z >= 0.110 & z <= 0.209] <- "11-20"
+# y[z >= 0.210 & z <= 0.309] <- "21-30"
+# y[z >= 0.310 & z <= 0.409] <- "31-40"
+# y[z >= 0.410 & z <= 0.509] <- "41-50"
+# y[z >= 0.510 & z <= 0.609] <- "51-60"
+# y[z >= 0.610 & z <= 0.709] <- "61-70"
+# y[z >= 0.710 & z <= 0.809] <- "71-80"
+# y[z >= 0.810 & z <= 0.909] <- "81-90"
+# y[z >= 0.910 & z <= 1.000] <- "91-100"
+# })
+# }
+# 
+# data <- repl(data,y,data$frac_white) 
+# data <- rename(data,c(y = "white"))
+# data$white <- factor(data$white)
+
+
+# ordinal categories for ethnic concentration
+
+fisl <- function(y,z){
+y[z >= 0.000 & z <= 0.109] <- "0-10"
+y[z >= 0.110 & z <= 0.209] <- "11-20"
+y[z >= 0.210 & z <= 0.309] <- "21-30"
+y[z >= 0.310 & z <= 0.409] <- "31-40"
+y[z >= 0.410 & z <= 0.509] <- "41-50"
+y[z >= 0.510 & z <= 0.609] <- "51-60"
+y[z >= 0.610 & z <= 0.709] <- "61-70"
+y[z >= 0.710 & z <= 0.809] <- "71-80"
+y[z >= 0.810 & z <= 0.909] <- "81-90"
+y[z >= 0.910 & z <= 1.000] <- "91-100"
+
+factor(y, ordered = TRUE)
+}
+
+data$white <- fisl(data$white,data$frac_white)
+data$black <- fisl(data$black,data$frac_black)
+data$asian <- fisl(data$asian,data$frac_asian)
+data$diveth <- fisl(data$diveth,data$ethdiv)
+data$high <- fisl(data$high,data$frac_high)
+data$medium <- fisl(data$medium,data$frac_med)
+data$low <- fisl(data$low,data$frac_low)
+data$divses <- fisl(data$divses,data$sesdiv)
+
+
+
+
+
+####
+
+# selection variables
+
+data_cat <- data %>% select(GEO_LABEL,white, black,asian,diveth,high, medium,low,divses)
+
+# each aggregate category ethnicXses is translated into an observation row, with choice-geography repeated as many time as people live in the unit (uncount) 
+
+wh <- data.frame(ID = paste0("wh",c(1:sum(data$w_hs))),ses = "high",ethnic = "white",uncount(data_cat,as.numeric(data$w_hs)))
+ bh <- data.frame(ID = paste0("bh",c(1:sum(data$b_hs))),ses = "high",ethnic = "black",uncount(data_cat,as.numeric(data$b_hs)))
+ ah <- data.frame(ID = paste0("ah",c(1:sum(data$a_hs))),ses = "high",ethnic = "asian",uncount(data_cat,as.numeric(data$a_hs)))
+# 
+ wm <- data.frame(ID = paste0("wm",c(1:sum(data$w_ms))),ses = "medium",ethnic = "white",uncount(data_cat,as.numeric(data$w_ms)))
+ bm <- data.frame(ID = paste0("bm",c(1:sum(data$b_ms))),ses = "medium",ethnic = "black",uncount(data_cat,as.numeric(data$b_ms)))
+ am <- data.frame(ID = paste0("am",c(1:sum(data$a_ms))),ses = "medium",ethnic = "asian",uncount(data_cat,as.numeric(data$a_ms)))
+# 
+ wl <- data.frame(ID = paste0("wl",c(1:sum(data$w_ls))),ses = "low",ethnic = "white",uncount(data_cat,as.numeric(data$w_ls)))
+ bl <- data.frame(ID = paste0("bl",c(1:sum(data$b_ls))),ses = "low",ethnic = "black",uncount(data_cat,as.numeric(data$b_ls)))
+ al <- data.frame(ID = paste0("al",c(1:sum(data$a_ls))),ses = "low",ethnic = "asian",uncount(data_cat,as.numeric(data$a_ls)))
+
+ # final dataset
+ 
+ dataset <- rbind(wh,bh,ah,wm,bm,am,wl,bl,al)
+ names(dataset)[names(dataset) == 'GEO_LABEL'] <- 'choice'
+ 
+ # to write out dataset in excel, too big
+ # write.csv(dataset,file ="dataset_final")
+
+ 
+ # objects are removed and final dataset kept
+ 
+ keep(dataset,data_cat, sure = TRUE)
+ 
+ # plot to check aggregated number consistency
+ plot_pop <- ggplot(dataset,aes(dataset$ses,fill=dataset$ses)) + geom_bar() + facet_wrap(dataset$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0) 
+ plot_pop
+
+# ggsave("population.png",plot_pop)
+
+
+
+
+```
+
