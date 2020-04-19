@@ -1,5 +1,5 @@
 ---
-title: "brent2"
+title: "Multinomial Logit Brent"
 output: pdf_document
 ---
 
