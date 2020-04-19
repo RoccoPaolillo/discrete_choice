@@ -92,25 +92,22 @@ al <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$a_ls))),ses = "low",ethnic
 
 # final dataset
 
-dataseta <- rbind(wh,bh,ah,wm,bm,am,wl,bl,al)
-names(dataseta)[names(dataseta) == 'GEO_LABEL'] <- 'choice'
+# final dataset
+
+dataset <- rbind(wh,bh,ah,wm,bm,am,wl,bl,al)
+names(dataset)[names(dataset) == 'GEO_LABEL'] <- 'choice'
 
 
 #write.csv(dataset,file ="dataset_final")
 
-# write.table(dataseta,file = "dataset_choice.csv",sep = ";", row.names = FALSE)
-#  testtable <- table(dataseta$ethnic,dataseta$ses) #,dataset$choice
-#  
-#  testtable
-#  barplot(testtable, main="population brent",
-#   xlab="ses", col=c("darkblue","red","yellow"),
-#   legend = rownames(testtable))
-#  
+keep(dataset,datab_final, sure = TRUE)
 
-B <- ggplot(dataseta,aes(dataseta$ses,fill=dataseta$ses)) + geom_bar() + facet_wrap(dataseta$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0)
+plotpop <- ggplot(dataset,aes(dataset$ses,fill=dataset$ses)) + geom_bar() + facet_wrap(dataset$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0)
 
 
-B
+plotpop
+
+
 
 
 
