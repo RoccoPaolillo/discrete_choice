@@ -4,34 +4,29 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
-library(tidyr)
 library(plyr)
+library(tidyr)
 library(readxl)
 library(tidyverse)
-library(epiR)
 library(ggplot2)
 library(gdata)
 library(nnet)
 library(reshape2)
-library(pander)
-
-
+library(dummies)
+library(mlogit)
 # UK Geographies: https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography#output-area-oa
 # UK Geographies: http://infuse.ukdataservice.ac.uk/help/definitions/2011geographies/index.html 
-wd <- setwd("C:/Users/rocpa/OneDrive/Desktop/brent2")
-datab <- read.csv("databrent.csv",sep = ";",skip = 1)
 
+wd <- setwd("C:/Users/rocpa/OneDrive/Desktop/MW/mLBRENT/discrete_choice-master/multinomial logit/")
+datab <- read.csv("databrent.csv",sep = ";",skip = 1)
 
 datab$w_hs <- datab$w_1 + datab$w_2
 datab$b_hs <- datab$b_1 + datab$b_2
 datab$a_hs <- datab$a_1 + datab$a_2
-
 datab$w_ms <- datab$w_3 + datab$w_4 + datab$w_5
 datab$b_ms <- datab$b_3 + datab$b_4 + datab$b_5
 datab$a_ms <- datab$a_3 + datab$a_4 + datab$a_5
-
 datab$w_ls <- datab$w_6 + datab$w_7
 datab$b_ls <- datab$b_6 + datab$b_7
 datab$a_ls <- datab$a_6 + datab$a_7
@@ -39,18 +34,15 @@ datab$a_ls <- datab$a_6 + datab$a_7
 datab$w <- datab$w_1 + datab$w_2 + datab$w_3 + datab$w_4 + datab$w_5 + datab$w_6 + datab$w_7
 datab$b <- datab$b_1 + datab$b_2 + datab$b_3 + datab$b_4 + datab$b_5 + datab$b_6 + datab$b_7
 datab$a <- datab$a_1 + datab$a_2 + datab$a_3 + datab$a_4 + datab$a_5 + datab$a_6 + datab$a_7
-
 datab$h <- datab$w_hs + datab$b_hs + datab$a_hs
 datab$m <- datab$w_ms + datab$b_ms + datab$a_ms
 datab$l <- datab$w_ls + datab$b_ls + datab$a_ls
-
 datab$tot <- datab$w + datab$b + datab$a
 
 datab$frac_white <- datab$w/datab$tot #round(datab$w/datab$tot, digits = 2)
 datab$frac_black <- datab$b/datab$tot #round(datab$b/datab$tot, digits = 2)
 datab$frac_asian <- datab$a/datab$tot #round(datab$a/datab$tot, digits = 2)
 datab$tot_frac <- datab$frac_white + datab$frac_black + datab$frac_asian
-
 datab$frac_high <- datab$h/datab$tot
 datab$frac_med  <- datab$m/datab$tot
 datab$frac_low  <- datab$l/datab$tot
@@ -59,9 +51,69 @@ datab$tot_class <- datab$h/datab$tot + datab$m/datab$tot + datab$l/datab$tot
 datab$ethdiv <-  1 - ( ((datab$w * (datab$w - 1)) + (datab$b * (datab$b - 1)) + (datab$a * (datab$a - 1))) / (datab$tot * (datab$tot - 1))  )
 datab$sesdiv <- 1 - ( ((datab$h * (datab$h - 1)) + (datab$m * (datab$m - 1)) + (datab$l * (datab$l - 1))) / (datab$tot * (datab$tot - 1))  )
 
+# selected variable
 
-datab_final <- datab %>% select(GEO_LABEL,tot,frac_white,frac_black,frac_asian,frac_high,frac_med,frac_low,ethdiv,sesdiv,w_hs,b_hs,a_hs,w_ms,b_ms,a_ms,w_ls,b_ls,a_ls)
+datab_final <- datab %>% dplyr::select(GEO_LABEL,tot,frac_white,frac_black,frac_asian,frac_high,frac_med,frac_low,ethdiv,sesdiv,w_hs,b_hs,a_hs,w_ms,b_ms,a_ms,w_ls,b_ls,a_ls)
 
+
+wh <- data.frame(ID = paste0("wh",c(1:sum(datab$w_hs))),ses = "high",ethnic = "white",uncount(datab_final, as.numeric(datab$w_hs)))[,1:4]
+bh <- data.frame(ID = paste0("bh",c(1:sum(datab$b_hs))),ses = "high",ethnic = "black",uncount(datab_final, as.numeric(datab$b_hs)))[,1:4]
+ah <- data.frame(ID = paste0("ah",c(1:sum(datab$a_hs))),ses = "high",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_hs)))[,1:4]
+
+wm <- data.frame(ID = paste0("wm",c(1:sum(datab$w_ms))),ses = "medium",ethnic = "white",uncount(datab_final, as.numeric(datab$w_ms)))[,1:4]
+bm <- data.frame(ID = paste0("bm",c(1:sum(datab$b_ms))),ses = "medium",ethnic = "black",uncount(datab_final, as.numeric(datab$b_ms)))[,1:4]
+am <- data.frame(ID = paste0("am",c(1:sum(datab$a_ms))),ses = "medium",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_ms)))[,1:4]
+
+wl <- data.frame(ID = paste0("wl",c(1:sum(datab$w_ls))),ses = "low",ethnic = "white",uncount(datab_final, as.numeric(datab$w_ls)))[,1:4]
+bl <- data.frame(ID = paste0("bl",c(1:sum(datab$b_ls))),ses = "low",ethnic = "black",uncount(datab_final, as.numeric(datab$b_ls)))[,1:4]
+al <- data.frame(ID = paste0("al",c(1:sum(datab$a_ls))),ses = "low",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_ls)))[,1:4]
+
+## DATA AS LONG  FORMAT
+
+# row dataset
+datasetraw <- rbind(wh,bh,ah,wm,bm,am,wl,bl,al)
+datasetraw <- rename(datasetraw, c(GEO_LABEL = "wr")) # renamed for shortness
+
+# dummy variable to have 1 where people live (GEO_LABEL), 0 for the other wards
+datasetdummy <- dummy(datasetraw$wr,sep= "_")
+
+# individual level dataset: individual characteristic, choice
+datasetchoice <- cbind(datasetraw,datasetdummy)
+datalong <- gather(datasetchoice,alt,choice,5:38)[,-4] # long format: alt variable, choice (1=yes, 0= no)
+
+# final dataset individual level in long format ordered by ID: individual characteristic ID, choice, alternative characteristics from aggregate data
+datalong.sort <- cbind(datalong[order(datalong$ID),],datab_final[,2:10]) 
+
+keep(datalong.sort,datab_final, sure = TRUE)
+
+## DATASET Prepared for MLOGIT
+
+mdata <- mlogit.data(datalong.sort,  chid.var = "ID",alt.var = "alt", drop.index = TRUE)
+
+```
+
+```{r mlgt1, include=TRUE, echo=FALSE}
+#mlogit(choice ~ cost + freq | income | time, MC, alt.subset = c("car", "train", "air"), reflevel = "car")
+memory.size(max = TRUE)
+mlgt1 <- mlogit(choice ~ frac_white | ethnic |0, mdata, alt.subset = c("wr_Brent001", "wr_Brent002", "wr_Brent003"),reflevel = "wr_Brent001")
+
+summary(mlgt1)
+
+fitted(mlgt1)
+
+# Try to simulate probability for continuous concentration, not managed yet
+
+po <- data.frame(ethnic= rep(c("white","black","asian"),each = 11),frac_white = rep(seq(0,1,by=0.1),3))
+predict(mlgt1, newdata = po, "probs")
+
+
+#probmlg <- cbind(dataset, predict(mlin, dataset, type = "probs"))
+```
+
+
+
+```{r wide format, include=FALSE, echo=FALSE}
+####### For wide format
 
 # passages to get dataset as needed for mlogit package in wide format: each column repeats variable for each option: A_ethwithe, B_ethwhite etc.
 
@@ -70,7 +122,6 @@ datasetlong2$var <- paste0(datasetlong2$GEO_LABEL,"_",datasetlong2$descr)
 
 data3a <- within(datasetlong2, rm(GEO_LABEL, descr))[,c("var","value")]  # as.data.frame(datasetlong2[- c(datasetlong2$GEO_LABEL,datasetlong2$descr)])
 data3a <- data.frame(t(data3a))
-
 names(data3a) <- as.matrix(data3a[1, ])                                  # to let first row become name of variable
 data3a <- data3a[-1, ]
 data3a[] <- lapply(data3a, function(x) type.convert(as.character(x)))
@@ -78,56 +129,34 @@ data3a <- data3a[, order(names(data3a))]
 
 # report aggregated data to observation row, plus option_variable
 
-wh <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$w_hs))),ses = "high",ethnic = "white",uncount(datab_final, as.numeric(datab$w_hs)))[,1:4],data3a)
-bh <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$b_hs))),ses = "high",ethnic = "black",uncount(datab_final, as.numeric(datab$b_hs)))[,1:4],data3a)
-ah <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$a_hs))),ses = "high",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_hs)))[,1:4],data3a)
+whw <- cbind(wh,data3a)
+bhw <- cbind(bh,data3a)
+ahw <- cbind(ah,data3a)
 
-wm <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$w_ms))),ses = "medium",ethnic = "white",uncount(datab_final, as.numeric(datab$w_ms)))[,1:4],data3a)
-bm <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$b_ms))),ses = "medium",ethnic = "black",uncount(datab_final, as.numeric(datab$b_ms)))[,1:4],data3a)
-am <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$a_ms))),ses = "medium",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_ms)))[,1:4],data3a)
+wmw <- cbind(wm,data3a)
+bmw <- cbind(bm,data3a)
+amw <- cbind(am,data3a)
 
-wl <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$w_ls))),ses = "low",ethnic = "white",uncount(datab_final, as.numeric(datab$w_ls)))[,1:4],data3a)
-bl <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$b_ls))),ses = "low",ethnic = "black",uncount(datab_final, as.numeric(datab$b_ls)))[,1:4],data3a)
-al <- cbind(data.frame(ID = paste0("wh",c(1:sum(datab$a_ls))),ses = "low",ethnic = "asian",uncount(datab_final, as.numeric(datab$a_ls)))[,1:4],data3a)
+wlw <- cbind(wl,data3a)
+blw <- cbind(bl,data3a)
+alw <- cbind(al,data3a)
+
 
 # final dataset
-
 # final dataset
-
-dataset <- rbind(wh,bh,ah,wm,bm,am,wl,bl,al)
-names(dataset)[names(dataset) == 'GEO_LABEL'] <- 'choice'
-
-
+datasetwide <- rbind(whw,bhw,ahw,wmw,bmw,amw,wlw,blw,alw)
+names(datasetwide)[names(datasetwide) == 'GEO_LABEL'] <- 'choice'
 #write.csv(dataset,file ="dataset_final")
-
-keep(dataset,datab_final, sure = TRUE)
-
-plotpop <- ggplot(dataset,aes(dataset$ses,fill=dataset$ses)) + geom_bar() + facet_wrap(dataset$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0)
+keep(datasetwide,datab_final, sure = TRUE)
 
 
-plotpop
 
-
+# plot to overview population, BUG
+# plotpop <- ggplot(datasetwide,aes(datasetwide$ses,fill=datasetwide$ses)) + geom_bar() + facet_wrap(datasetwide$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0)
 
 
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
