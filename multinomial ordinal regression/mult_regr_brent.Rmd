@@ -1,13 +1,11 @@
 ---
-title: "Multinomial Logistic Regression Brent"
+title: "Ordinal logistic Regression Brent"
 output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
-library(tidyr)
-library(plyr)
 library(readxl)
 library(tidyverse)
 library(epiR)
@@ -15,7 +13,7 @@ library(ggplot2)
 library(gdata)
 library(nnet)
 library(reshape2)
-library(pander)
+library(MASS)
 memory.limit(size = 200000)
 
 
@@ -24,7 +22,7 @@ memory.limit(size = 200000)
 # UK Geographies: http://infuse.ukdataservice.ac.uk/help/definitions/2011geographies/index.html 
 
 # acquiring data (name row variable changed in csv (original Ist row here removed))
-wd <- setwd("C:/Users/rocpa/OneDrive/Desktop/brent3")
+wd <- setwd("C:/Users/rocpa/OneDrive/Desktop/MW/mLBRENT/discrete_choice-master/multinomial ordinal regression/")
 data <- read.csv("brent3.csv",sep = ";",skip = 1)
 data$GEO_LABEL <- factor(data$GEO_LABEL)
 
@@ -115,6 +113,7 @@ y[z >= 0.610 & z <= 0.709] <- "61-70"
 y[z >= 0.710 & z <= 0.809] <- "71-80"
 y[z >= 0.810 & z <= 0.909] <- "81-90"
 y[z >= 0.910 & z <= 1.000] <- "91-100"
+y[z  > 1.000] <- "101"
 
 factor(y, ordered = TRUE)
 }
@@ -136,7 +135,7 @@ data$divses <- fisl(data$divses,data$sesdiv)
 
 # selection variables
 
-data_cat <- data %>% select(GEO_LABEL,white, black,asian,diveth,high, medium,low,divses)
+data_cat <- dplyr::select(data,GEO_LABEL,white, black,asian,diveth,high, medium,low,divses)
 
 # each aggregate category ethnicXses is translated into an observation row, with choice-geography repeated as many time as people live in the unit (uncount) 
 
@@ -163,16 +162,43 @@ wh <- data.frame(ID = paste0("wh",c(1:sum(data$w_hs))),ses = "high",ethnic = "wh
  
  # objects are removed and final dataset kept
  
- keep(dataset,data_cat, sure = TRUE)
+ keep(dataset, sure = TRUE)
  
- # plot to check aggregated number consistency
- plot_pop <- ggplot(dataset,aes(dataset$ses,fill=dataset$ses)) + geom_bar() + facet_wrap(dataset$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0) 
- plot_pop
+ # plot to check aggregated number consistency, bug to check
+ # plot_pop <- ggplot(dataset,aes(fill=dataset$ses)) + geom_bar() + facet_wrap(dataset$ethnic) + scale_fill_manual( values =c(high = "green",medium = "orange",low ="blue")) + geom_text(stat="count", aes(label=..count..),vjust = 0) 
+ # plot_pop
 
-# ggsave("population.png",plot_pop)
-
-
-
+ 
 
 ```
 
+
+In the chunk setup, census data are translated into "dataset".  
+
+Polr() command runs the ordinal logit, extracting the log-odds ($\beta$). For R structure it has negative value with MASS package (to check how would work in abm).
+
+Predict() function to obtain the probability from the log-odds (coefficients of the regression models):
+exponentiate(log-odd) -> odds -> probability = odds/(1 + odds)
+
+```{r proba, echo=FALSE, include=TRUE}
+
+mlin <- polr(white ~ ethnic + ses, data = dataset, Hess=TRUE) # linear combination
+m2int <- polr(white ~ ethnic*ses, data = dataset, Hess=TRUE) # interaction
+m3both <- polr(white ~ ethnic:ses, data = dataset, Hess=TRUE) # both
+
+summary(mlin) 
+summary(m2int)
+summary(m3both)
+
+# to test, in discrete choice models: coefficient of regression: log-off -> exp(log-off) -> odds-ratio -> used to predict the probability
+
+exp(coef(mlin))
+# 
+# a <- predict(m, dataset, type = "probs")
+
+# Predicted probability for each individual
+
+problin <- cbind(dataset, predict(mlin, dataset, type = "probs"))
+probint  <- cbind(dataset, predict(m2int, dataset, type = "probs"))
+
+```
