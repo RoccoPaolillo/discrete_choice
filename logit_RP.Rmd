@@ -164,7 +164,24 @@ dataset$ses_conc <- fisl(dataset$ses_conc,dataset$frac_homos)
 # write.csv(dataset, file = "Brent_RP.csv", row.names = FALSE)
 
 
+# hole population descriptive
 
+dataset$ses <- factor(dataset$ses, ordered = TRUE, levels = c("low","middle","high"))
+
+asn <- paste0("asian: ", sum(dataset$ethnic == "asian"))
+bln <- paste0("black: ", sum(dataset$ethnic == "black"))
+wln <- paste0("white: ", sum(dataset$ethnic == "white"))
+
+lwn <- paste0("low: ", sum(dataset$ses == "low"))
+mdn <- paste0("middle: ", sum(dataset$ses == "middle"))
+hgn <- paste0("high: ", sum(dataset$ses == "high"))
+
+ethnic_label <- c(asn,bln,wln)
+names(ethnic_label) <- c("asian","black","white")
+
+a <- ggplot(data = dataset, aes(x = ses, fill = ses)) + geom_bar(stats = 'identity',position=position_dodge()) + geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white") + facet_wrap(~ ethnic, labeller = labeller(ethnic = ethnic_label)) + scale_fill_discrete(name = "SES", labels = c(lwn,mdn,hgn)) + theme_bw()
+
+suppressMessages(print(a))
 
 
 
