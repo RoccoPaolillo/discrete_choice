@@ -1,0 +1,247 @@
+---
+output:
+  bookdown::pdf_document2:
+    toc: false
+    keep_tex: false
+    fig_caption: yes
+title: "Multinomial choice in residential relocation"
+author: Rocco Paolillo
+bibliography: "references.bib"
+link-citations: yes
+# csl: apa.csl # by default: Chicago style
+header-includes:
+- \usepackage{float}
+- \usepackage{multirow}
+- \usepackage{xcolor} 
+- \usepackage{graphicx} 
+- \usepackage{cite}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.lp="fig:")
+
+
+library(mlogit)
+#install.packages("bibtex")
+# install.packages("tinytex", repos = "https://cloud.r-project.org" ) if debug needed?
+# library(namelibrary) for the R library
+# http://rmarkdown.rstudio.com
+# echo = TRUE <- makes all next cmds appear
+```
+\newcommand{\rocco}[1]{\textcolor{red}{{Rocco:}#1}} <!-- command to appear in pdf -->
+
+# Needs
+- How can we estimate the probability of someone holding two characteristics: joint probability from conditional probability
+- Using cross-sectional data, individual choice can be used by making a long-format
+
+
+# Method
+
+Nested models account for the unmeasured heterogeneity, but the structure must be known
+Mixed Logit Model always the best
+shape of response curve = functional form
+Choose the current neighborhood: include it as variable dummy (1 when it is the same, 0 otherwise) [@bruch2012, 138]
+Using Markov Chain for aggregated data? [@bruch2012]
+Markov Chain?
+
+
+https://cran.r-project.org/web/packages/mlogit/ > vignette
+
+Exercise: https://cran.r-project.org/web/packages/mlogit/vignettes/e1mlogit.html
+
+http://people.stern.nyu.edu/wgreene/DiscreteChoice2014.htm
+
+## MLOGIT
+
+* default shape is long format
+
+* utility of the choice is desumed by observation and assumed only difference in utility matters. Parameters of coefficients can be estimated, they are not known, only their linear combinations n-1 (out of 3 parameters, 2 linear combination). To solve this, it is assumed that distribution is normalized and one paramter1 = 0. -> "only differences of these coefficients are relevant and can be identified. For example, with three alternatives 1, 2 and 3, the three coefficients ??1,??2,??3 associated to a choice situation specific variable cannot be identified, but only two linear combinations of them. Therefore, one has to make a choice of normalization and the simplest one is just to set ??1=0."
+
+```{r mlogit train, echo = FALSE, include=TRUE}
+# https://cran.r-project.org/web/packages/mlogit/ > vignette
+
+# Mlogit uses MAXIMUM LIKELIHOOD and fundamentally a logistic regression (choice = 1/0) 
+# https://towardsdatascience.com/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1
+
+data("Train", package = "mlogit")
+head(Train, 3)
+
+
+Tr <- mlogit.data(Train, shape = "wide", choice = "choice",
+                  varying = 4:11, sep = "_", id.var = "id",
+                  opposite = c("price", "comfort", "time", "change"))
+
+Tr$price <- Tr$price / 100 * 2.20371
+Tr$time <- Tr$time / 60
+
+head(Tr, 3)
+
+# long format
+
+data("ModeCanada", package = "mlogit")
+head(ModeCanada)
+
+#mlogit.data only to prepare the data for mlogit function
+
+MC <- mlogit.data(ModeCanada, subset = noalt == 4,       
+                  alt.levels = c("train", "air", "bus", "car"))
+
+MC <- mlogit.data(ModeCanada , subset = noalt == 4, alt.var = "alt")
+
+MC <- mlogit.data(ModeCanada, subset = noalt == 4, chid.var = "case",
+                  alt.levels = c("train", "air", "bus", "car"))
+
+MC <- mlogit.data(ModeCanada, subset = noalt == 4, chid.var = "case",
+                  alt.var = "alt")
+
+MC <- mlogit.data(ModeCanada, subset = noalt == 4, chid.var = "case",
+                  alt.var = "alt", drop.index = TRUE)
+head(MC)
+
+
+
+# f <- mFormula(choice ~ cost | income + urban | ivt)
+
+# A regression formula must be calculated (y ~ x )according to the 4 conditions, each separared by |. You choose how that variable must be considered:
+# 1) alternative and choice situation specific covariates xij with generic coefficients ?? and and alternative specific covariates tj with a generic coefficient ??,
+# 2) choice situation specific covariates zi with alternative specific coefficients ??j,
+# 3) alternative and choice situation specific covariates wij with alternative specific coefficients ??j,
+# 4) choice situation specific covariates vi that influence the variance of the errors.
+
+f <- mFormula(choice ~ cost | income  | ivt)
+
+# After writing the formula based on theory, you set the model.matrix(formula, multinomial logit calculated above) which will arrange the info from the multinomial logit
+
+head(model.matrix(f, MC),4)
+
+statpval <- function(x){
+    if (inherits(x, "anova")) 
+        result <- as.matrix(x)[2, c("Chisq", "Pr(>Chisq)")]
+    if (inherits(x, "htest")) result <- c(x$statistic, x$p.value)
+    names(result) <- c("stat", "p-value")
+    round(result, 3)
+}
+
+# statpval(MC)
+
+# HERE the proper mlogit function
+
+data("ModeCanada", package = "mlogit")
+MC <- mlogit.data(ModeCanada, subset = noalt == 4, chid.var = "case",
+                  alt.var = "alt", drop.index = TRUE)
+ml.MC1 <- mlogit(choice ~ cost + freq + ovt | income | ivt, MC)
+
+
+# reflevel: the "reference" alternative, i.e., the one for which the coefficients of choice situation specific covariates are set to 0,
+# alt.subset indicates a subset of alternatives on which the estimation has to be performed
+
+MC$time <- with(MC, ivt + ovt) # with(data, exp): run the exp in the data.frame data
+ml.MC1 <- mlogit(choice ~ cost + freq | income | time, MC, 
+alt.subset = c("car", "train", "air"), reflevel = "car")
+
+summary(ml.MC1)
+
+# iteration: stepwise the predictor is included
+# log-likelihood: the increase on x-axis is associated with increase on y-axis, fitting maximum likelihood. The higher the better, the sign is negative because of pdf of more variables included, so not meaningful. The value is meaningless if not compared to sample etc. To observe how it changes with different models.
+# goodness of fit of two competing statistical models based on the ratio of their likelihoods, specifically one found by maximization over the entire parameter space and another found after imposing some constraint (H0). High levels cannot reject HO: calculated data do not differ from observed as if H1 were true and they are random
+
+head(fitted(ml.MC1, type = "outcome")) # prob. only for the option
+
+head(fitted(ml.MC1, type = "probabilities"), 4) # this is exp(Ui)/Sum(exp(Uj)). To calculate U for each option, take the estimate and multiply by the variable that is in the mlogit.data (beta * parameter), Mlogit tells you whether the beta estimate is the same for all options, or it is different for each option -> interaction term option:estimate. Remember to include the intercept in the calculation. Reference option must be included, which has intercept equal 0, reason why it is excluded from some interactions with variable: here intercept and :income.
+fitted(ml.MC1, type = "probabilities")
+
+
+# NESTED LOGIT: The nested logit model was first proposed by (McFadden 1978). It is a generalization of the multinomial logit model that is based on the idea that some alternatives may be joined in several groups (called nests). The error terms may then present some correlation in the same nest, whereas error terms of different nests are still uncorrelated. -> relaxes IIV -> heteroskedastic logit model
+# , ??m=1 implies no correlation,  ??m=1???m, the errors are iid Gumbel errors and the nested logit model reduce to the multinomial logit model then it is again multinomial
+
+# NESTED LOGIT: Let us now write the deterministic part of the utility of alternative j as the sum of two terms: the first one (Zj) being specific to the alternative and the second one (Wl) to the nest it belongs to: Vj=Zj+Wl.
+
+data("JapaneseFDI", package = "mlogit")
+
+
+```
+
+f <- mFormula(choice ~ cost | income + urban | ivt) is the regression formula, which must be built according to:
+
+
+
+```{r gronescu, echo = FALSE, include=TRUE} 
+
+
+library(MCMCpack)
+data("electors", package="PoEdata")
+
+data("transport", package="PoEdata")
+data("coke", package="PoEdata")
+
+library(nnet)
+data("nels_small", package="PoEdata")
+
+data("olympics", package="PoEdata")
+data("mroz", package="PoEdata")
+
+library("MASS")
+data("menarche",package="MASS")
+str(menarche)
+summary(menarche)
+
+plot(Menarche/Total ~ Age, data=menarche)
+glm.out = glm(cbind(Menarche, Total-Menarche) ~ Age, family=binomial(logit), data=menarche)
+
+summary(glm.out)
+
+plot(Menarche/Total ~ Age, data=menarche)
+lines(menarche$Age, glm.out$fitted, type="l", col="red")
+title(main="Menarche Data with Fitted Logistic Regression Line")
+
+anova(glm.out)
+
+library(mclogit)
+data("Transport")
+
+
+summary(mclogit(
+  cbind(resp,suburb)~distance+cost,
+  data=Transport
+  ))
+
+
+# DATASET BREMEN
+
+http://www.statistik-bremen.de/soev/abfrage_resultat.cfm?tabelle=17356&titelname=Bremen%20Kleinr%C3%A4umig%20Infosystem&netscape=ja
+
+
+
+```
+
+
+
+
+
+
+
+# Data
+Individual: Attitudes, Values, Personality > political orientation
+SOEP companion so far did not show anything valid
+\par
+http://www.statistik-bremen.de/soev/statwizard_step1.cfm
+https://www.bbsr.bund.de/BBSR/DE/Stadtentwicklung/StadtentwicklungDeutschland/innerstaedtische-entwicklung/02-merkmalskatalog.html
+http://www.statistik-bremen.de/soev/abfrage.cfm?tabelle=18284&netscape=ja&titelname=Bremen%20Kleinr%C3%A4umig%20Infosystem
+
+working  with aggregated data: \par
+http://ww2.coastal.edu/kingw/statistics/R-tutorials/logistic.html
+https://stats.stackexchange.com/questions/55916/generalized-lm-or-lm-in-ecological-dataset/55919#55919
+
+
+
+# Extra
+
+Useful links:\
+[time-series](https://bookdown.org/ccolonescu/RPoE4/time-series-nonstationarity.html#spurious-regression)
+R package: mclogit
+[choice regression](https://onlinepubs.trb.org/onlinepubs/nchrp/cd-22/v2chapter5.html)
+
+
+
+# References
