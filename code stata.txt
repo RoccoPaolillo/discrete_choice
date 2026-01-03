@@ -1,0 +1,1 @@
+clogit choice c.frac_white##i.ses , group(row_id)
