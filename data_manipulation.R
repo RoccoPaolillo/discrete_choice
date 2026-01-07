@@ -5,6 +5,14 @@ library(tidyr)
 
 setwd("C:/Users/LENOVO/Documents/GitHub/discrete_choice/")
 
+# test data downloaded
+
+df2001 <- read.csv("data/BRENT_2001_ward/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
+df2011 <- read.csv("data/BRENT_2011_ward/Data_AGE_ETHGRP_NSSEC_UNIT.csv",sep=",")
+
+unique(df2001$GEO_LABEL)
+unique(df2011$GEO_LABEL)
+
 df <- read.csv("Brent_RP.csv",sep=",")
 #df <- df %>% select(ID,ses,ethnic,choice,frac_white,frac_black,frac_asian,frac_high,frac_mid,frac_low)
 df <- df %>% select(ID,ses,ethnic,choice,frac_homos,frac_homoe)

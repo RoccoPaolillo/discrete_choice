@@ -1,0 +1,232 @@
+CDU_FIELD_NAME,CENSUS_CELLNAME,TOPIC,CATEGORY,TOPIC_DESCRIPTION,
+F81418,LC6206EW0011,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81418,LC6206EW0011,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81418,LC6206EW0011,NS-SeC (National Statistics Socio-economic Classification),"1. Higher managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81418,LC6206EW0011,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81430,LC6206EW0038,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81430,LC6206EW0038,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81430,LC6206EW0038,NS-SeC (National Statistics Socio-economic Classification),"2. Lower managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81430,LC6206EW0038,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81434,LC6206EW0047,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81434,LC6206EW0047,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81434,LC6206EW0047,NS-SeC (National Statistics Socio-economic Classification),3. Intermediate occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81434,LC6206EW0047,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81438,LC6206EW0056,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81438,LC6206EW0056,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81438,LC6206EW0056,NS-SeC (National Statistics Socio-economic Classification),4. Small employers and own account workers,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81438,LC6206EW0056,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81442,LC6206EW0065,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81442,LC6206EW0065,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81442,LC6206EW0065,NS-SeC (National Statistics Socio-economic Classification),5. Lower supervisory and technical occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81442,LC6206EW0065,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81446,LC6206EW0074,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81446,LC6206EW0074,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81446,LC6206EW0074,NS-SeC (National Statistics Socio-economic Classification),6. Semi-routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81446,LC6206EW0074,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81450,LC6206EW0083,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81450,LC6206EW0083,Ethnic group [E][S][W],White,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81450,LC6206EW0083,NS-SeC (National Statistics Socio-economic Classification),7. Routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81450,LC6206EW0083,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81978,LC6206EW0016,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81978,LC6206EW0016,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81978,LC6206EW0016,NS-SeC (National Statistics Socio-economic Classification),"1. Higher managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81978,LC6206EW0016,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81990,LC6206EW0043,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81990,LC6206EW0043,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81990,LC6206EW0043,NS-SeC (National Statistics Socio-economic Classification),"2. Lower managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81990,LC6206EW0043,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81994,LC6206EW0052,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81994,LC6206EW0052,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81994,LC6206EW0052,NS-SeC (National Statistics Socio-economic Classification),3. Intermediate occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81994,LC6206EW0052,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F81998,LC6206EW0061,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F81998,LC6206EW0061,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F81998,LC6206EW0061,NS-SeC (National Statistics Socio-economic Classification),4. Small employers and own account workers,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F81998,LC6206EW0061,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82002,LC6206EW0070,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82002,LC6206EW0070,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82002,LC6206EW0070,NS-SeC (National Statistics Socio-economic Classification),5. Lower supervisory and technical occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82002,LC6206EW0070,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82006,LC6206EW0079,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82006,LC6206EW0079,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82006,LC6206EW0079,NS-SeC (National Statistics Socio-economic Classification),6. Semi-routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82006,LC6206EW0079,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82010,LC6206EW0088,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82010,LC6206EW0088,Ethnic group [E][S][W],Asian/Asian British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82010,LC6206EW0088,NS-SeC (National Statistics Socio-economic Classification),7. Routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82010,LC6206EW0088,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82282,LC6206EW0017,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82282,LC6206EW0017,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82282,LC6206EW0017,NS-SeC (National Statistics Socio-economic Classification),"1. Higher managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82282,LC6206EW0017,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82294,LC6206EW0044,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82294,LC6206EW0044,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82294,LC6206EW0044,NS-SeC (National Statistics Socio-economic Classification),"2. Lower managerial, administrative and professional occupations","The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82294,LC6206EW0044,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82298,LC6206EW0053,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82298,LC6206EW0053,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82298,LC6206EW0053,NS-SeC (National Statistics Socio-economic Classification),3. Intermediate occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82298,LC6206EW0053,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82302,LC6206EW0062,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82302,LC6206EW0062,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82302,LC6206EW0062,NS-SeC (National Statistics Socio-economic Classification),4. Small employers and own account workers,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82302,LC6206EW0062,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82306,LC6206EW0071,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82306,LC6206EW0071,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82306,LC6206EW0071,NS-SeC (National Statistics Socio-economic Classification),5. Lower supervisory and technical occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82306,LC6206EW0071,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82310,LC6206EW0080,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82310,LC6206EW0080,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82310,LC6206EW0080,NS-SeC (National Statistics Socio-economic Classification),6. Semi-routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82310,LC6206EW0080,Unit,Persons,The unit is for a particular count (e.g. people or households),
+F82314,LC6206EW0089,Age,Age 16 and over,"Age is derived from the date of birth question and is a person's age at their last birthday, at 27 March 2011. Dates of birth that imply an age over 115 are treated as invalid and the person's age is imputed. Infants less than one year old are classified as 0 years of age.",
+F82314,LC6206EW0089,Ethnic group [E][S][W],Black/African/Caribbean/Black British,Ethnic group classifies people according to their own perceived ethnic group and cultural background.,
+F82314,LC6206EW0089,NS-SeC (National Statistics Socio-economic Classification),7. Routine occupations,"The National Statistics Socio-economic Classification (NS-SeC) provides an indication of socio-economic position based on occupation. It is an Office for National Statistics standard classification.
+<br/>
+To assign a person aged 16 to 74 to an NS-SeC category, their occupation title is combined with information about their employment status, whether they are employed or self-employed and whether or not they supervise other employees. Full-time students are recorded in the 'full-time students' category regardless of whether they are economically active or not.
+ The rebased version of NS-SeC used in census results uses occupation coded to SOC2010. Information about the classification is available here: <a href="http://www.ons.gov.uk/ons/guide-method/classifications/current-standard-classifications/soc2010/soc2010-volume-3-ns-sec--rebased-on-soc2010--user-manual/index.html" target="_blank">NS-SEC rebased on SOC2010</a>.
+<br/>
+For 'Long-term unemployed', the year last worked is 2009 or earlier.
+<br/>
+In 2011 Census results, because the census did not ask a question about the number of employees at a person's workplace, the reduced method of deriving NS-SeC (which does not require this information) is used.",
+F82314,LC6206EW0089,Unit,Persons,The unit is for a particular count (e.g. people or households),
