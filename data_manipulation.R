@@ -6,7 +6,8 @@ library(tidyr)
 setwd("C:/Users/LENOVO/Documents/GitHub/discrete_choice/")
 
 df <- read.csv("Brent_RP.csv",sep=",")
-df <- df %>% select(ID,ses,ethnic,choice,frac_white,frac_black,frac_asian,frac_high,frac_mid,frac_low)
+#df <- df %>% select(ID,ses,ethnic,choice,frac_white,frac_black,frac_asian,frac_high,frac_mid,frac_low)
+df <- df %>% select(ID,ses,ethnic,choice,frac_homos,frac_homoe)
 names(df)[names(df) == "choice"] <- "district_id"
 
 df <- df %>% 
@@ -50,15 +51,15 @@ write.csv(df_sub,file="df_sub.csv",row.names = F)
 
 alts <- df_sub %>%
   group_by(district_id) %>%
-  summarise(
-    frac_white = first(frac_white),
-    frac_black = first(frac_black),
-    frac_asian = first(frac_asian),
-    frac_high = first(frac_high),
-    frac_mid = first(frac_mid),
-    frac_low = first(frac_low),
-    .groups = "drop"
-  ) %>%
+  # summarise(
+  #   frac_white = first(frac_white),
+  #   frac_black = first(frac_black),
+  #   frac_asian = first(frac_asian),
+  #   frac_high = first(frac_high),
+  #   frac_mid = first(frac_mid),
+  #   frac_low = first(frac_low),
+  #   .groups = "drop"
+  # ) %>%
   rename(district_id_alt = district_id)
 
 df_sub <- df_sub %>%
@@ -71,7 +72,9 @@ df_expanded <- df_sub %>%
     # keep all the person/household vars you want repeated:
     ID = ID,                                   # if you have an id column; otherwise remove
     ses = ses,
-    ethnic = ethnic
+    ethnic = ethnic,
+    frac_homos = frac_homos,
+    frac_homoe = frac_homoe
     # add more chooser vars as needed
   ) %>%
   crossing(alts) %>%                            # adds district_id_alt + frac_homos/frac_homoe for each alternative
@@ -80,11 +83,31 @@ df_expanded <- df_sub %>%
   select(-c("district_id_chosen"))
 write.csv(df_expanded,file="df_expanded.csv",row.names = F)
 
+# for district X chooser alternatives homos and homoe
+alts <- df_sub %>%
+  group_by(ID, district_id) %>%
+  summarise(
+    frac_homos_alt = first(frac_homos),
+    frac_homoe_alt = first(frac_homoe),
+    .groups = "drop"
+  ) %>%
+  rename(district_id_alt = district_id)
 
-
-
-
-
+df_expanded <- df_sub %>%
+  mutate(row_id = row_number()) %>%   # ensure row_id exists; remove if already exists
+  transmute(
+    row_id,
+    district_id_chosen = district_id,
+    ses = ses,
+    ethnic = ethnic
+  ) %>%
+  crossing(alts) %>%
+  mutate(choice = as.integer(district_id_alt == district_id_chosen)) %>%
+  rename(district_id = district_id_alt,
+         frac_homos = frac_homos_alt,
+         frac_homoe = frac_homoe_alt) %>%
+  select(-district_id_chosen)
+write.csv(df_expanded,file="df_expanded.csv",row.names = F)
 
 
 
