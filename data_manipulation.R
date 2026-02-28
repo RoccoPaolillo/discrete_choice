@@ -5,7 +5,7 @@ library(tidyr)
 
 setwd("C:/Users/LENOVO/Documents/GitHub/discrete_choice/")
 
-# test data downloaded
+# test data downloaded ####
 
 df2001 <- read.csv("data/BRENT_2001_ward/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
 df2011 <- read.csv("data/BRENT_2011_ward/Data_AGE_ETHGRP_NSSEC_UNIT.csv",sep=",")
@@ -118,11 +118,58 @@ df_expanded <- df_sub %>%
 write.csv(df_expanded,file="df_expanded.csv",row.names = F)
 
 
+# new data test ####
+
+df_all <- NULL   # accumulator
+
+files <- list.files("data_ward/2001/")
+
+for (i in files) {
+  df <- read.csv(
+    paste0("data_ward/2001/",i,"/Data_ETHGEW_NS_SEC_UNIT.csv"),
+           sep = ",",
+           stringsAsFactors = FALSE,
+           check.names = FALSE
+    )
+    df[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
+    names(df) <- df[1,]
+    df <- df[-1,]
+    df$borough_year <- i
+    df$borough <- sub("_(\\d{4})$", "", i)
+    df$year <- as.integer(sub(".*_(\\d{4})$", "\\1", i))
+    df <- df %>% select(borough_year,borough, year,everything())
+    df[,-c(1:8)] <- lapply(df[,-c(1:8)], function(x) as.numeric(x))
+    
+    df_all <- bind_rows(df_all, df)
+}
 
 
+x <- "White \ British - Socio-economic Classification (NS-SeC) : Class 2 (Lower managerial and professional occupations) - Unit : People"
+
+label <- tolower(paste0(
+  # first word before the first "\"
+  sub(" .*", "", trimws(sub("\\\\.*$", "", x))),
+  "_",
+  # class + number
+  sub(".*Class ([0-9]+).*", "class\\1", x)
+))
+
+label
 
 
+# df_2011a <- read.csv("data_ward/2001/barking_and_dagenham_2001/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
+# df_2011b <- read.csv("data_ward/2001/barnet_2001/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
+# dfbind <- rbind(df_2011a,df_2011b)
+# dfbind <- bind_rows(df_2011a, df_2011b)
+# 
+# df_2011a2 <- df_2011a[-1, ]
+# df_2011b2 <- df_2011b[-1, ]
+# 
+# # (optional but recommended) ensure same column order
+# df_2011b2 <- df_2011b2[, names(df_2011a2)]
+# dfbind <- rbind(df_2011a2, df_2011b2)
 
-
+# keep
+dfbind[,-c(1:5)] <- lapply(dfbind[,-c(1:5)], function(x) as.numeric(x))
 
 
