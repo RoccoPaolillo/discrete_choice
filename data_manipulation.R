@@ -120,13 +120,46 @@ write.csv(df_expanded,file="df_expanded.csv",row.names = F)
 
 # new data test ####
 
-df_all <- NULL   # accumulator
+df_all01 <- NULL   # accumulator
+df_all11 <- NULL   # accumulator
+
+files <- list.files("data_ward/2011/")
+
+# 2010
+
+df_all01 <- NULL   # accumulator
 
 files <- list.files("data_ward/2001/")
 
 for (i in files) {
   df <- read.csv(
     paste0("data_ward/2001/",i,"/Data_ETHGEW_NS_SEC_UNIT.csv"),
+    sep = ",",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  )
+  df[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
+  names(df) <- df[1,]
+  df <- df[-1,]
+  df$borough_year <- i
+  df$borough <- sub("_(\\d{4})$", "", i)
+  df$year <- as.integer(sub(".*_(\\d{4})$", "\\1", i))
+  df <- df %>% select(borough_year,borough, year,everything())
+  df[,-c(1:8)] <- lapply(df[,-c(1:8)], function(x) as.numeric(x))
+  
+  df_all01 <- bind_rows(df_all01, df)
+}
+
+
+# 2011
+
+df_all11 <- NULL   # accumulator
+
+files <- list.files("data_ward/2011/")
+
+for (i in files) {
+  df <- read.csv(
+    paste0("data_ward/2011/",i,"/Data_AGE_ETHGRP_NSSEC_SEX_UNIT.csv"),
            sep = ",",
            stringsAsFactors = FALSE,
            check.names = FALSE
@@ -140,10 +173,39 @@ for (i in files) {
     df <- df %>% select(borough_year,borough, year,everything())
     df[,-c(1:8)] <- lapply(df[,-c(1:8)], function(x) as.numeric(x))
     
-    df_all <- bind_rows(df_all, df)
+    df_all11 <- bind_rows(df_all11, df)
+}
+
+# 2021
+
+df_croydon <- 
+
+df_all21 <- NULL   # accumulator
+
+files <- list.files("data_ward/2021/")
+
+for (i in c("croydon_2021_1","croydon_2021_2")) {
+  df <- read.csv(
+    paste0("data_ward/2021/","croydon_2021","/",i,".csv"),
+    sep = ",",
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  )
+  df[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
+  names(df) <- df[1,]
+  df <- df[-1,]
+  df$borough_year <- i
+  df$borough <- sub("_(\\d{4})$", "", i)
+  df$year <- as.integer(sub(".*_(\\d{4})$", "\\1", i))
+  df <- df %>% select(borough_year,borough, year,everything())
+  df[,-c(1:8)] <- lapply(df[,-c(1:8)], function(x) as.numeric(x))
+  
+  df_all21 <- bind_rows(df_all21, df)
 }
 
 
+
+# label
 x <- "White \ British - Socio-economic Classification (NS-SeC) : Class 2 (Lower managerial and professional occupations) - Unit : People"
 
 label <- tolower(paste0(
