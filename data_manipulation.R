@@ -208,11 +208,7 @@ df_all11_r <- df_all11_r[-1,]
 
 # 2021
 
-eling <- read.csv("data_ward/2021/ealing_2021/ealing_2021.csv",
-  sep = ",",
-  stringsAsFactors = FALSE,
-  check.names = FALSE
-)
+
 
 recode_21 <- read.csv("data_ward/recode_2021.csv",
                       sep = ";",
@@ -235,35 +231,16 @@ for (i in files) {
   df_all21 <- bind_rows(df_all21, df)
 }
 
+fileslist <- list.files("data_ward/other_include/ealing_2021")
+df_ealing <- NULL   # accumulator
+for(d in fileslist){
+ealing <- read.csv(paste0("data_ward/other_include/ealing_2021/", d),
+                  sep = ",",
+                  stringsAsFactors = FALSE,
+                  check.names = FALSE
+)
+df_ealing <- bind_rows(df_ealing, ealing)
+}
 
-
-# label
-x <- "White \ British - Socio-economic Classification (NS-SeC) : Class 2 (Lower managerial and professional occupations) - Unit : People"
-
-label <- tolower(paste0(
-  # first word before the first "\"
-  sub(" .*", "", trimws(sub("\\\\.*$", "", x))),
-  "_",
-  # class + number
-  sub(".*Class ([0-9]+).*", "class\\1", x)
-))
-
-label
-
-
-# df_2011a <- read.csv("data_ward/2001/barking_and_dagenham_2001/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
-# df_2011b <- read.csv("data_ward/2001/barnet_2001/Data_ETHGEW_NS_SEC_UNIT.csv",sep=",")
-# dfbind <- rbind(df_2011a,df_2011b)
-# dfbind <- bind_rows(df_2011a, df_2011b)
-# 
-# df_2011a2 <- df_2011a[-1, ]
-# df_2011b2 <- df_2011b[-1, ]
-# 
-# # (optional but recommended) ensure same column order
-# df_2011b2 <- df_2011b2[, names(df_2011a2)]
-# dfbind <- rbind(df_2011a2, df_2011b2)
-
-# keep
-dfbind[,-c(1:5)] <- lapply(dfbind[,-c(1:5)], function(x) as.numeric(x))
-
-
+df_all21 <- rbind(df_all21,df_croydon)
+df_all21 <- rbind(df_all21,df_ealing)
