@@ -120,10 +120,10 @@ write.csv(df_expanded,file="df_expanded.csv",row.names = F)
 
 # new data test ####
 
-df_all01 <- NULL   # accumulator
-df_all11 <- NULL   # accumulator
-
-files <- list.files("data_ward/2011/")
+# df_all01 <- NULL   # accumulator
+# df_all11 <- NULL   # accumulator
+# 
+# files <- list.files("data_ward/2011/")
 
 # 2001
 
@@ -149,7 +149,19 @@ for (i in files) {
   
   df_all01 <- bind_rows(df_all01, df)
 }
+df_all01 <- df_all01[,-114]
 
+recode_01 <- read.csv("data_ward/recode_2001.csv",sep=";", header = F)
+recode_01 <- recode_01[-1,]
+r_df01 <- as.data.frame(t(recode_01))
+names(r_df01) <- r_df01[1,]
+r_df01 <- r_df01[-1,]
+
+df_all01_r <- rbind(r_df01,df_all01)
+check_dfall01 <- t(df_all01_r[1,])
+
+names(df_all01_r) <- df_all01_r[1,]
+df_all01_r <- df_all01_r[-1,]
 
 # 2011
 
@@ -176,34 +188,50 @@ for (i in files) {
     df_all11 <- bind_rows(df_all11, df)
 }
 
+
+df_all11 <- df_all11[,-121]
+
+recode_11 <- read.csv("data_ward/recode_2011.csv",sep=";", header = F)
+recode_11 <- recode_11[-1,]
+r_df11 <- as.data.frame(t(recode_11))
+names(r_df11) <- r_df11[1,]
+r_df11 <- r_df11[-1,]
+
+df_all11_r <- rbind(r_df11,df_all11)
+check_dfall11 <- t(df_all11_r[1,])
+
+names(df_all11_r) <- df_all11_r[1,]
+df_all11_r <- df_all11_r[-1,]
+
+
+
+
 # 2021
 
-df_croydon <-   df <- read.csv("data_ward/2021/croydon_2021/croydon_2021_1.csv",
+eling <- read.csv("data_ward/2021/ealing_2021/ealing_2021.csv",
   sep = ",",
   stringsAsFactors = FALSE,
   check.names = FALSE
+)
+
+recode_21 <- read.csv("data_ward/recode_2021.csv",
+                      sep = ";",
+                      stringsAsFactors = FALSE,
+                      check.names = FALSE
 )
 
 df_all21 <- NULL   # accumulator
 
 files <- list.files("data_ward/2021/")
 
-for (i in c("croydon_2021_1","croydon_2021_2")) {
+for (i in files) {
   df <- read.csv(
-    paste0("data_ward/2021/","croydon_2021","/",i,".csv"),
+    paste0("data_ward/2021/",i,"/",i,".csv"),
     sep = ",",
     stringsAsFactors = FALSE,
     check.names = FALSE
   )
-  df[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
-  names(df) <- df[1,]
-  df <- df[-1,]
-  df$borough_year <- i
-  df$borough <- sub("_(\\d{4})$", "", i)
-  df$year <- as.integer(sub(".*_(\\d{4})$", "\\1", i))
-  df <- df %>% select(borough_year,borough, year,everything())
-  df[,-c(1:8)] <- lapply(df[,-c(1:8)], function(x) as.numeric(x))
-  
+    
   df_all21 <- bind_rows(df_all21, df)
 }
 
