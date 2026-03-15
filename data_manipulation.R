@@ -125,7 +125,7 @@ df_all11 <- NULL   # accumulator
 
 files <- list.files("data_ward/2011/")
 
-# 2010
+# 2001
 
 df_all01 <- NULL   # accumulator
 
@@ -178,7 +178,11 @@ for (i in files) {
 
 # 2021
 
-df_croydon <- 
+df_croydon <-   df <- read.csv("data_ward/2021/croydon_2021/croydon_2021_1.csv",
+  sep = ",",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
 
 df_all21 <- NULL   # accumulator
 

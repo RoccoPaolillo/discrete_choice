@@ -1,0 +1,241 @@
+recoded;Ethnic group (20 categories);National Statistics Socio-economic Classification (NS-SeC) (12 categories)
+notapply_notapply_notapply;Does not apply;Does not apply
+notapply_notapply_sc1;Does not apply;L1 and L2: Large employers and higher managerial and administrative occupations
+notapply_notapply_sc1;Does not apply;L3: Higher professional occupations
+notapply_notapply_sc2;Does not apply;L4, L5 and L6: Lower managerial, administrative and professional occupations
+notapply_notapply_sc3;Does not apply;L7: Intermediate occupations
+notapply_notapply_sc4;Does not apply;L8 and L9: Small employers and own account workers
+notapply_notapply_sc5;Does not apply;L10 and L11: Lower supervisory and technical occupations
+notapply_notapply_sc6;Does not apply;L12: Semi-routine occupations
+notapply_notapply_sc7;Does not apply;L13: Routine occupations
+notapply_notapply_neverworked;Does not apply;L14.1: Never worked
+notapply_notapply_longunemployed;Does not apply;L14.2: Long-term unemployed
+notapply_notapply_students;Does not apply;L15: Full-time students
+asian_bangladeshi_notapply;Asian, Asian British or Asian Welsh: Bangladeshi;Does not apply
+asian_bangladeshi_sc1;Asian, Asian British or Asian Welsh: Bangladeshi;L1 and L2: Large employers and higher managerial and administrative occupations
+asian_bangladeshi_sc1;Asian, Asian British or Asian Welsh: Bangladeshi;L3: Higher professional occupations
+asian_bangladeshi_sc2;Asian, Asian British or Asian Welsh: Bangladeshi;L4, L5 and L6: Lower managerial, administrative and professional occupations
+asian_bangladeshi_sc3;Asian, Asian British or Asian Welsh: Bangladeshi;L7: Intermediate occupations
+asian_bangladeshi_sc4;Asian, Asian British or Asian Welsh: Bangladeshi;L8 and L9: Small employers and own account workers
+asian_bangladeshi_sc5;Asian, Asian British or Asian Welsh: Bangladeshi;L10 and L11: Lower supervisory and technical occupations
+asian_bangladeshi_sc6;Asian, Asian British or Asian Welsh: Bangladeshi;L12: Semi-routine occupations
+asian_bangladeshi_sc7;Asian, Asian British or Asian Welsh: Bangladeshi;L13: Routine occupations
+asian_bangladeshi_neverworked;Asian, Asian British or Asian Welsh: Bangladeshi;L14.1: Never worked
+asian_bangladeshi_longunemployed;Asian, Asian British or Asian Welsh: Bangladeshi;L14.2: Long-term unemployed
+asian_bangladeshi_students;Asian, Asian British or Asian Welsh: Bangladeshi;L15: Full-time students
+asian_chinese_notapply;Asian, Asian British or Asian Welsh: Chinese;Does not apply
+asian_chinese_sc1;Asian, Asian British or Asian Welsh: Chinese;L1 and L2: Large employers and higher managerial and administrative occupations
+asian_chinese_sc1;Asian, Asian British or Asian Welsh: Chinese;L3: Higher professional occupations
+asian_chinese_sc2;Asian, Asian British or Asian Welsh: Chinese;L4, L5 and L6: Lower managerial, administrative and professional occupations
+asian_chinese_sc3;Asian, Asian British or Asian Welsh: Chinese;L7: Intermediate occupations
+asian_chinese_sc4;Asian, Asian British or Asian Welsh: Chinese;L8 and L9: Small employers and own account workers
+asian_chinese_sc5;Asian, Asian British or Asian Welsh: Chinese;L10 and L11: Lower supervisory and technical occupations
+asian_chinese_sc6;Asian, Asian British or Asian Welsh: Chinese;L12: Semi-routine occupations
+asian_chinese_sc7;Asian, Asian British or Asian Welsh: Chinese;L13: Routine occupations
+asian_chinese_neverworked;Asian, Asian British or Asian Welsh: Chinese;L14.1: Never worked
+asian_chinese_longunemployed;Asian, Asian British or Asian Welsh: Chinese;L14.2: Long-term unemployed
+asian_chinese_students;Asian, Asian British or Asian Welsh: Chinese;L15: Full-time students
+asian_indian_notapply;Asian, Asian British or Asian Welsh: Indian;Does not apply
+asian_indian_sc1;Asian, Asian British or Asian Welsh: Indian;L1 and L2: Large employers and higher managerial and administrative occupations
+asian_indian_sc1;Asian, Asian British or Asian Welsh: Indian;L3: Higher professional occupations
+asian_indian_sc2;Asian, Asian British or Asian Welsh: Indian;L4, L5 and L6: Lower managerial, administrative and professional occupations
+asian_indian_sc3;Asian, Asian British or Asian Welsh: Indian;L7: Intermediate occupations
+asian_indian_sc4;Asian, Asian British or Asian Welsh: Indian;L8 and L9: Small employers and own account workers
+asian_indian_sc5;Asian, Asian British or Asian Welsh: Indian;L10 and L11: Lower supervisory and technical occupations
+asian_indian_sc6;Asian, Asian British or Asian Welsh: Indian;L12: Semi-routine occupations
+asian_indian_sc7;Asian, Asian British or Asian Welsh: Indian;L13: Routine occupations
+asian_indian_neverworked;Asian, Asian British or Asian Welsh: Indian;L14.1: Never worked
+asian_indian_longunemployed;Asian, Asian British or Asian Welsh: Indian;L14.2: Long-term unemployed
+asian_indian_students;Asian, Asian British or Asian Welsh: Indian;L15: Full-time students
+asian_pakistani_notapply;Asian, Asian British or Asian Welsh: Pakistani;Does not apply
+asian_pakistani_sc1;Asian, Asian British or Asian Welsh: Pakistani;L1 and L2: Large employers and higher managerial and administrative occupations
+asian_pakistani_sc1;Asian, Asian British or Asian Welsh: Pakistani;L3: Higher professional occupations
+asian_pakistani_sc2;Asian, Asian British or Asian Welsh: Pakistani;L4, L5 and L6: Lower managerial, administrative and professional occupations
+asian_pakistani_sc3;Asian, Asian British or Asian Welsh: Pakistani;L7: Intermediate occupations
+asian_pakistani_sc4;Asian, Asian British or Asian Welsh: Pakistani;L8 and L9: Small employers and own account workers
+asian_pakistani_sc5;Asian, Asian British or Asian Welsh: Pakistani;L10 and L11: Lower supervisory and technical occupations
+asian_pakistani_sc6;Asian, Asian British or Asian Welsh: Pakistani;L12: Semi-routine occupations
+asian_pakistani_sc7;Asian, Asian British or Asian Welsh: Pakistani;L13: Routine occupations
+asian_pakistani_neverworked;Asian, Asian British or Asian Welsh: Pakistani;L14.1: Never worked
+asian_pakistani_longunemployed;Asian, Asian British or Asian Welsh: Pakistani;L14.2: Long-term unemployed
+asian_pakistani_students;Asian, Asian British or Asian Welsh: Pakistani;L15: Full-time students
+asian_other_notapply;Asian, Asian British or Asian Welsh: Other Asian;Does not apply
+asian_other_sc1;Asian, Asian British or Asian Welsh: Other Asian;L1 and L2: Large employers and higher managerial and administrative occupations
+asian_other_sc1;Asian, Asian British or Asian Welsh: Other Asian;L3: Higher professional occupations
+asian_other_sc2;Asian, Asian British or Asian Welsh: Other Asian;L4, L5 and L6: Lower managerial, administrative and professional occupations
+asian_other_sc3;Asian, Asian British or Asian Welsh: Other Asian;L7: Intermediate occupations
+asian_other_sc4;Asian, Asian British or Asian Welsh: Other Asian;L8 and L9: Small employers and own account workers
+asian_other_sc5;Asian, Asian British or Asian Welsh: Other Asian;L10 and L11: Lower supervisory and technical occupations
+asian_other_sc6;Asian, Asian British or Asian Welsh: Other Asian;L12: Semi-routine occupations
+asian_other_sc7;Asian, Asian British or Asian Welsh: Other Asian;L13: Routine occupations
+asian_other_neverworked;Asian, Asian British or Asian Welsh: Other Asian;L14.1: Never worked
+asian_other_longunemployed;Asian, Asian British or Asian Welsh: Other Asian;L14.2: Long-term unemployed
+asian_other_students;Asian, Asian British or Asian Welsh: Other Asian;L15: Full-time students
+black_african_notapply;Black, Black British, Black Welsh, Caribbean or African: African;Does not apply
+black_african_sc1;Black, Black British, Black Welsh, Caribbean or African: African;L1 and L2: Large employers and higher managerial and administrative occupations
+black_african_sc1;Black, Black British, Black Welsh, Caribbean or African: African;L3: Higher professional occupations
+black_african_sc2;Black, Black British, Black Welsh, Caribbean or African: African;L4, L5 and L6: Lower managerial, administrative and professional occupations
+black_african_sc3;Black, Black British, Black Welsh, Caribbean or African: African;L7: Intermediate occupations
+black_african_sc4;Black, Black British, Black Welsh, Caribbean or African: African;L8 and L9: Small employers and own account workers
+black_african_sc5;Black, Black British, Black Welsh, Caribbean or African: African;L10 and L11: Lower supervisory and technical occupations
+black_african_sc6;Black, Black British, Black Welsh, Caribbean or African: African;L12: Semi-routine occupations
+black_african_sc7;Black, Black British, Black Welsh, Caribbean or African: African;L13: Routine occupations
+black_african_neverworked;Black, Black British, Black Welsh, Caribbean or African: African;L14.1: Never worked
+black_african_longunemployed;Black, Black British, Black Welsh, Caribbean or African: African;L14.2: Long-term unemployed
+black_african_students;Black, Black British, Black Welsh, Caribbean or African: African;L15: Full-time students
+black_carribean_notapply;Black, Black British, Black Welsh, Caribbean or African: Caribbean;Does not apply
+black_carribean_sc1;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L1 and L2: Large employers and higher managerial and administrative occupations
+black_carribean_sc1;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L3: Higher professional occupations
+black_carribean_sc2;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L4, L5 and L6: Lower managerial, administrative and professional occupations
+black_carribean_sc3;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L7: Intermediate occupations
+black_carribean_sc4;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L8 and L9: Small employers and own account workers
+black_carribean_sc5;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L10 and L11: Lower supervisory and technical occupations
+black_carribean_sc6;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L12: Semi-routine occupations
+black_carribean_sc7;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L13: Routine occupations
+black_carribean_neverworked;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L14.1: Never worked
+black_carribean_longunemployed;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L14.2: Long-term unemployed
+black_carribean_students;Black, Black British, Black Welsh, Caribbean or African: Caribbean;L15: Full-time students
+black_other_notapply;Black, Black British, Black Welsh, Caribbean or African: Other Black;Does not apply
+black_other_sc1;Black, Black British, Black Welsh, Caribbean or African: Other Black;L1 and L2: Large employers and higher managerial and administrative occupations
+black_other_sc1;Black, Black British, Black Welsh, Caribbean or African: Other Black;L3: Higher professional occupations
+black_other_sc2;Black, Black British, Black Welsh, Caribbean or African: Other Black;L4, L5 and L6: Lower managerial, administrative and professional occupations
+black_other_sc3;Black, Black British, Black Welsh, Caribbean or African: Other Black;L7: Intermediate occupations
+black_other_sc4;Black, Black British, Black Welsh, Caribbean or African: Other Black;L8 and L9: Small employers and own account workers
+black_other_sc5;Black, Black British, Black Welsh, Caribbean or African: Other Black;L10 and L11: Lower supervisory and technical occupations
+black_other_sc6;Black, Black British, Black Welsh, Caribbean or African: Other Black;L12: Semi-routine occupations
+black_other_sc7;Black, Black British, Black Welsh, Caribbean or African: Other Black;L13: Routine occupations
+black_other_neverworked;Black, Black British, Black Welsh, Caribbean or African: Other Black;L14.1: Never worked
+black_other_longunemployed;Black, Black British, Black Welsh, Caribbean or African: Other Black;L14.2: Long-term unemployed
+black_other_students;Black, Black British, Black Welsh, Caribbean or African: Other Black;L15: Full-time students
+mixed_whiteasian_notapply;Mixed or Multiple ethnic groups: White and Asian;Does not apply
+mixed_whiteasian_sc1;Mixed or Multiple ethnic groups: White and Asian;L1 and L2: Large employers and higher managerial and administrative occupations
+mixed_whiteasian_sc1;Mixed or Multiple ethnic groups: White and Asian;L3: Higher professional occupations
+mixed_whiteasian_sc2;Mixed or Multiple ethnic groups: White and Asian;L4, L5 and L6: Lower managerial, administrative and professional occupations
+mixed_whiteasian_sc3;Mixed or Multiple ethnic groups: White and Asian;L7: Intermediate occupations
+mixed_whiteasian_sc4;Mixed or Multiple ethnic groups: White and Asian;L8 and L9: Small employers and own account workers
+mixed_whiteasian_sc5;Mixed or Multiple ethnic groups: White and Asian;L10 and L11: Lower supervisory and technical occupations
+mixed_whiteasian_sc6;Mixed or Multiple ethnic groups: White and Asian;L12: Semi-routine occupations
+mixed_whiteasian_sc7;Mixed or Multiple ethnic groups: White and Asian;L13: Routine occupations
+mixed_whiteasian_neverworked;Mixed or Multiple ethnic groups: White and Asian;L14.1: Never worked
+mixed_whiteasian_longunemployed;Mixed or Multiple ethnic groups: White and Asian;L14.2: Long-term unemployed
+mixed_whiteasian_students;Mixed or Multiple ethnic groups: White and Asian;L15: Full-time students
+mixed_whiteblackafrican_notapply;Mixed or Multiple ethnic groups: White and Black African;Does not apply
+mixed_whiteblafrican_sc1;Mixed or Multiple ethnic groups: White and Black African;L1 and L2: Large employers and higher managerial and administrative occupations
+mixed_whiteblafrican_sc1;Mixed or Multiple ethnic groups: White and Black African;L3: Higher professional occupations
+mixed_whiteblafrican_sc2;Mixed or Multiple ethnic groups: White and Black African;L4, L5 and L6: Lower managerial, administrative and professional occupations
+mixed_whiteblafrican_sc3;Mixed or Multiple ethnic groups: White and Black African;L7: Intermediate occupations
+mixed_whiteblafrican_sc4;Mixed or Multiple ethnic groups: White and Black African;L8 and L9: Small employers and own account workers
+mixed_whiteblafrican_sc5;Mixed or Multiple ethnic groups: White and Black African;L10 and L11: Lower supervisory and technical occupations
+mixed_whiteblafrican_sc6;Mixed or Multiple ethnic groups: White and Black African;L12: Semi-routine occupations
+mixed_whiteblafrican_sc7;Mixed or Multiple ethnic groups: White and Black African;L13: Routine occupations
+mixed_whiteblafrican_neverworked;Mixed or Multiple ethnic groups: White and Black African;L14.1: Never worked
+mixed_whiteblafrican_longunemployed;Mixed or Multiple ethnic groups: White and Black African;L14.2: Long-term unemployed
+mixed_whiteblafrican_students;Mixed or Multiple ethnic groups: White and Black African;L15: Full-time students
+mixed_whiteblcarribean_notapply;Mixed or Multiple ethnic groups: White and Black Caribbean;Does not apply
+mixed_whiteblcarribean_sc1;Mixed or Multiple ethnic groups: White and Black Caribbean;L1 and L2: Large employers and higher managerial and administrative occupations
+mixed_whiteblcarribean_sc1;Mixed or Multiple ethnic groups: White and Black Caribbean;L3: Higher professional occupations
+mixed_whiteblcarribean_sc2;Mixed or Multiple ethnic groups: White and Black Caribbean;L4, L5 and L6: Lower managerial, administrative and professional occupations
+mixed_whiteblcarribean_sc3;Mixed or Multiple ethnic groups: White and Black Caribbean;L7: Intermediate occupations
+mixed_whiteblcarribean_sc4;Mixed or Multiple ethnic groups: White and Black Caribbean;L8 and L9: Small employers and own account workers
+mixed_whiteblcarribean_sc5;Mixed or Multiple ethnic groups: White and Black Caribbean;L10 and L11: Lower supervisory and technical occupations
+mixed_whiteblcarribean_sc6;Mixed or Multiple ethnic groups: White and Black Caribbean;L12: Semi-routine occupations
+mixed_whiteblcarribean_sc7;Mixed or Multiple ethnic groups: White and Black Caribbean;L13: Routine occupations
+mixed_whiteblcarribean_neverworked;Mixed or Multiple ethnic groups: White and Black Caribbean;L14.1: Never worked
+mixed_whiteblcarribean_longunemployed;Mixed or Multiple ethnic groups: White and Black Caribbean;L14.2: Long-term unemployed
+mixed_whiteblcarribean_students;Mixed or Multiple ethnic groups: White and Black Caribbean;L15: Full-time students
+mixed_other_notapply;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;Does not apply
+mixed_other_sc1;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L1 and L2: Large employers and higher managerial and administrative occupations
+mixed_other_sc1;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L3: Higher professional occupations
+mixed_other_sc2;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L4, L5 and L6: Lower managerial, administrative and professional occupations
+mixed_other_sc3;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L7: Intermediate occupations
+mixed_other_sc4;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L8 and L9: Small employers and own account workers
+mixed_other_sc5;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L10 and L11: Lower supervisory and technical occupations
+mixed_other_sc6;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L12: Semi-routine occupations
+mixed_other_sc7;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L13: Routine occupations
+mixed_other_neverworked;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L14.1: Never worked
+mixed_other_longunemployed;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L14.2: Long-term unemployed
+mixed_other_students;Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups;L15: Full-time students
+white_ewsnib_notapply;White: English, Welsh, Scottish, Northern Irish or British;Does not apply
+white_ewsnib_sc1;White: English, Welsh, Scottish, Northern Irish or British;L1 and L2: Large employers and higher managerial and administrative occupations
+white_ewsnib_sc1;White: English, Welsh, Scottish, Northern Irish or British;L3: Higher professional occupations
+white_ewsnib_sc2;White: English, Welsh, Scottish, Northern Irish or British;L4, L5 and L6: Lower managerial, administrative and professional occupations
+white_ewsnib_sc3;White: English, Welsh, Scottish, Northern Irish or British;L7: Intermediate occupations
+white_ewsnib_sc4;White: English, Welsh, Scottish, Northern Irish or British;L8 and L9: Small employers and own account workers
+white_ewsnib_sc5;White: English, Welsh, Scottish, Northern Irish or British;L10 and L11: Lower supervisory and technical occupations
+white_ewsnib_sc6;White: English, Welsh, Scottish, Northern Irish or British;L12: Semi-routine occupations
+white_ewsnib_sc7;White: English, Welsh, Scottish, Northern Irish or British;L13: Routine occupations
+white_ewsnib_neverworked;White: English, Welsh, Scottish, Northern Irish or British;L14.1: Never worked
+white_ewsnib_longunemployed;White: English, Welsh, Scottish, Northern Irish or British;L14.2: Long-term unemployed
+white_ewsnib_students;White: English, Welsh, Scottish, Northern Irish or British;L15: Full-time students
+white_irish_notapply;White: Irish;Does not apply
+white_irish_sc1;White: Irish;L1 and L2: Large employers and higher managerial and administrative occupations
+white_irish_sc1;White: Irish;L3: Higher professional occupations
+white_irish_sc2;White: Irish;L4, L5 and L6: Lower managerial, administrative and professional occupations
+white_irish_sc3;White: Irish;L7: Intermediate occupations
+white_irish_sc4;White: Irish;L8 and L9: Small employers and own account workers
+white_irish_sc5;White: Irish;L10 and L11: Lower supervisory and technical occupations
+white_irish_sc6;White: Irish;L12: Semi-routine occupations
+white_irish_sc7;White: Irish;L13: Routine occupations
+white_irish_neverworked;White: Irish;L14.1: Never worked
+white_irish_longunemployed;White: Irish;L14.2: Long-term unemployed
+white_irish_students;White: Irish;L15: Full-time students
+white_gypsy_notapply;White: Gypsy or Irish Traveller;Does not apply
+white_gypsy_sc1;White: Gypsy or Irish Traveller;L1 and L2: Large employers and higher managerial and administrative occupations
+white_gypsy_sc1;White: Gypsy or Irish Traveller;L3: Higher professional occupations
+white_gypsy_sc2;White: Gypsy or Irish Traveller;L4, L5 and L6: Lower managerial, administrative and professional occupations
+white_gypsy_sc3;White: Gypsy or Irish Traveller;L7: Intermediate occupations
+white_gypsy_sc4;White: Gypsy or Irish Traveller;L8 and L9: Small employers and own account workers
+white_gypsy_sc5;White: Gypsy or Irish Traveller;L10 and L11: Lower supervisory and technical occupations
+white_gypsy_sc6;White: Gypsy or Irish Traveller;L12: Semi-routine occupations
+white_gypsy_sc7;White: Gypsy or Irish Traveller;L13: Routine occupations
+white_gypsy_neverworked;White: Gypsy or Irish Traveller;L14.1: Never worked
+white_gypsy_longunemployed;White: Gypsy or Irish Traveller;L14.2: Long-term unemployed
+white_gypsy_students;White: Gypsy or Irish Traveller;L15: Full-time students
+white_roma_notapply;White: Roma;Does not apply
+white_roma_sc1;White: Roma;L1 and L2: Large employers and higher managerial and administrative occupations
+white_roma_sc1;White: Roma;L3: Higher professional occupations
+white_roma_sc2;White: Roma;L4, L5 and L6: Lower managerial, administrative and professional occupations
+white_roma_sc3;White: Roma;L7: Intermediate occupations
+white_roma_sc4;White: Roma;L8 and L9: Small employers and own account workers
+white_roma_sc5;White: Roma;L10 and L11: Lower supervisory and technical occupations
+white_roma_sc6;White: Roma;L12: Semi-routine occupations
+white_roma_sc7;White: Roma;L13: Routine occupations
+white_roma_neverworked;White: Roma;L14.1: Never worked
+white_roma_longunemployed;White: Roma;L14.2: Long-term unemployed
+white_roma_students;White: Roma;L15: Full-time students
+white_other_notapply;White: Other White;Does not apply
+white_other_sc1;White: Other White;L1 and L2: Large employers and higher managerial and administrative occupations
+white_other_sc1;White: Other White;L3: Higher professional occupations
+white_other_sc2;White: Other White;L4, L5 and L6: Lower managerial, administrative and professional occupations
+white_other_sc3;White: Other White;L7: Intermediate occupations
+white_other_sc4;White: Other White;L8 and L9: Small employers and own account workers
+white_other_sc5;White: Other White;L10 and L11: Lower supervisory and technical occupations
+white_other_sc6;White: Other White;L12: Semi-routine occupations
+white_other_sc7;White: Other White;L13: Routine occupations
+white_other_neverworked;White: Other White;L14.1: Never worked
+white_other_longunemployed;White: Other White;L14.2: Long-term unemployed
+white_other_students;White: Other White;L15: Full-time students
+other_arab_notapply;Other ethnic group: Arab;Does not apply
+other_arab_sc1;Other ethnic group: Arab;L1 and L2: Large employers and higher managerial and administrative occupations
+other_arab_sc1;Other ethnic group: Arab;L3: Higher professional occupations
+other_arab_sc2;Other ethnic group: Arab;L4, L5 and L6: Lower managerial, administrative and professional occupations
+other_arab_sc3;Other ethnic group: Arab;L7: Intermediate occupations
+other_arab_sc4;Other ethnic group: Arab;L8 and L9: Small employers and own account workers
+other_arab_sc5;Other ethnic group: Arab;L10 and L11: Lower supervisory and technical occupations
+other_arab_sc6;Other ethnic group: Arab;L12: Semi-routine occupations
+other_arab_sc7;Other ethnic group: Arab;L13: Routine occupations
+other_arab_neverworked;Other ethnic group: Arab;L14.1: Never worked
+other_arab_longunemployed;Other ethnic group: Arab;L14.2: Long-term unemployed
+other_arab_students;Other ethnic group: Arab;L15: Full-time students
+other_other_notapply;Other ethnic group: Any other ethnic group;Does not apply
+other_other_sc1;Other ethnic group: Any other ethnic group;L1 and L2: Large employers and higher managerial and administrative occupations
+other_other_sc1;Other ethnic group: Any other ethnic group;L3: Higher professional occupations
+other_other_sc2;Other ethnic group: Any other ethnic group;L4, L5 and L6: Lower managerial, administrative and professional occupations
+other_other_sc3;Other ethnic group: Any other ethnic group;L7: Intermediate occupations
+other_other_sc4;Other ethnic group: Any other ethnic group;L8 and L9: Small employers and own account workers
+other_other_sc5;Other ethnic group: Any other ethnic group;L10 and L11: Lower supervisory and technical occupations
+other_other_sc6;Other ethnic group: Any other ethnic group;L12: Semi-routine occupations
+other_other_sc7;Other ethnic group: Any other ethnic group;L13: Routine occupations
+other_other_neverworked;Other ethnic group: Any other ethnic group;L14.1: Never worked
+other_other_longunemployed;Other ethnic group: Any other ethnic group;L14.2: Long-term unemployed
+other_other_students;Other ethnic group: Any other ethnic group;L15: Full-time students
