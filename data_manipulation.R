@@ -231,16 +231,20 @@ for (i in files) {
   df_all21 <- bind_rows(df_all21, df)
 }
 
-fileslist <- list.files("data_ward/other_include/ealing_2021")
-df_ealing <- NULL   # accumulator
+fileslist <- list.files("data_ward/other_include/richmond_upon_thames_2021")
+df_richtames <- NULL   # accumulator
 for(d in fileslist){
-ealing <- read.csv(paste0("data_ward/other_include/ealing_2021/", d),
+richtames <- read.csv(paste0("data_ward/other_include/richmond_upon_thames_2021/", d),
                   sep = ",",
                   stringsAsFactors = FALSE,
                   check.names = FALSE
 )
-df_ealing <- bind_rows(df_ealing, ealing)
+df_richtames <- bind_rows(df_richtames, richtames)
 }
 
 df_all21 <- rbind(df_all21,df_croydon)
 df_all21 <- rbind(df_all21,df_ealing)
+df_all21 <- rbind(df_all21,df_havering)
+
+
+
