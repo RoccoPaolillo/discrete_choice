@@ -13,6 +13,10 @@ library(patchwork)
 
 
 setwd("C:/Users/LENOVO/Documents/GitHub/discrete_choice/")
+for (i in c("index_table","plotfacet","picsconc")) {
+dir.create(i, recursive = FALSE, showWarnings = FALSE)
+}
+
 
 # dataset ####
 
@@ -54,7 +58,7 @@ check_dfall01 <- t(df_all01_r[1,])
 names(df_all01_r) <- df_all01_r[1,]
 df_all01_r <- df_all01_r[-1,]
 
-# city of London, Westminster to aggregate
+# city of London
 
 london01 <- read.csv("data_ward/city_london_westminster/city_of_london_2001.csv",sep=",")
 london01[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
@@ -72,12 +76,12 @@ names(london01_r) <- london01_r[1,]
 london01_r <- london01_r[-1,]
 london01_r[,-c(1:8)] <- lapply(london01_r[,-c(1:8)], function(x) as.numeric(x))
 
+# placeholder and aggregation, already passed
 # london01_r$CDU_ID <- "city_london"
 # london01_r$GEO_CODE <- "city_london"
 # london01_r$GEO_LABEL <- "city_london"
 # london01_r$GEO_TYPE <- "city_london"
 # london01_r$GEO_TYP2 <- "city_london"
-
 # london01_r <- london01_r %>%
 #   group_by(borough_year,borough, year) %>%
 #   summarise(
@@ -88,11 +92,9 @@ london01_r[,-c(1:8)] <- lapply(london01_r[,-c(1:8)], function(x) as.numeric(x))
 #     .groups = "drop"
 #   )
 
-
 london01_r <- london01_r %>% select(borough_year,borough,year,CDU_ID,GEO_CODE,GEO_LABEL,GEO_TYPE,GEO_TYP2,everything())
 
-
-# westminster
+# Westminster
 
 westminster01 <- read.csv("data_ward/city_london_westminster/westminster_2001.csv",sep=",")
 westminster01[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
@@ -110,6 +112,13 @@ names(westminster01_r) <- westminster01_r[1,]
 westminster01_r <- westminster01_r[-1,]
 westminster01_r[,-c(1:8)] <- lapply(westminster01_r[,-c(1:8)], function(x) as.numeric(x))
 
+
+# placeholder and aggregation, already passed
+# westminster01_r$CDU_ID <- "city_westminster"
+# westminster01_r$GEO_CODE <- "city_westminster"
+# westminster01_r$GEO_LABEL <- "city_westminster"
+# westminster01_r$GEO_TYPE <- "city_westminster"
+# westminster01_r$GEO_TYP2 <- "city_westminster"
 # westminster01_r <- westminster01_r %>%
 #   group_by(borough_year,borough, year) %>%
 #   summarise(
@@ -119,13 +128,6 @@ westminster01_r[,-c(1:8)] <- lapply(westminster01_r[,-c(1:8)], function(x) as.nu
 #     ),
 #     .groups = "drop"
 #   )
-
-
-# westminster01_r$CDU_ID <- "city_westminster"
-# westminster01_r$GEO_CODE <- "city_westminster"
-# westminster01_r$GEO_LABEL <- "city_westminster"
-# westminster01_r$GEO_TYPE <- "city_westminster"
-# westminster01_r$GEO_TYP2 <- "city_westminster"
 
 westminster01_r <- westminster01_r %>% select(borough_year,borough,year,CDU_ID,GEO_CODE,GEO_LABEL,GEO_TYPE,GEO_TYP2,everything())
 
@@ -174,9 +176,7 @@ names(df_all11_r) <- df_all11_r[1,]
 df_all11_r <- df_all11_r[-1,]
 
 
-# london and westminster
-
-# london
+# City of London
 london11 <- read.csv("data_ward/city_london_westminster/city_of_london_2011.csv",sep=";")
 london11[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
 names(london11) <- london11[1,]
@@ -192,6 +192,7 @@ names(london11_r) <- london11_r[1,]
 london11_r <- london11_r[-1,]
 london11_r[,-c(1:8)] <- lapply(london11_r[,-c(1:8)], function(x) as.numeric(x))
 
+# placeholder and aggregation, already passed
 # london11_r <- london11_r %>%
 #   group_by(borough_year,borough, year) %>%
 #   summarise(
@@ -202,7 +203,6 @@ london11_r[,-c(1:8)] <- lapply(london11_r[,-c(1:8)], function(x) as.numeric(x))
 #     .groups = "drop"
 #   )
 # 
-# 
 # london11_r$CDU_ID <- "city_london"
 # london11_r$GEO_CODE <- "city_london"
 # london11_r$GEO_LABEL <- "city_london"
@@ -211,7 +211,7 @@ london11_r[,-c(1:8)] <- lapply(london11_r[,-c(1:8)], function(x) as.numeric(x))
 
 london11_r <- london11_r %>% select(borough_year,borough,year,CDU_ID,GEO_CODE,GEO_LABEL,GEO_TYPE,GEO_TYP2,everything())
 
-# westminster
+# Westminster
 
 westminster11 <- read.csv("data_ward/city_london_westminster/westminster_2011.csv",sep=";")
 westminster11[1,1:5] <- c("CDU_ID","GEO_CODE","GEO_LABEL","GEO_TYPE","GEO_TYP2")
@@ -228,6 +228,12 @@ names(westminster11_r) <- westminster11_r[1,]
 westminster11_r <- westminster11_r[-1,]
 westminster11_r[,-c(1:8)] <- lapply(westminster11_r[,-c(1:8)], function(x) as.numeric(x))
 
+# placeholder and aggregation, already passed
+# westminster11_r$CDU_ID <- "city_westminster"
+# westminster11_r$GEO_CODE <- "city_westminster"
+# westminster11_r$GEO_LABEL <- "city_westminster"
+# westminster11_r$GEO_TYPE <- "city_westminster"
+# westminster11_r$GEO_TYP2 <- "city_westminster"
 # westminster11_r <- westminster11_r %>%
 #   group_by(borough_year,borough, year) %>%
 #   summarise(
@@ -237,12 +243,6 @@ westminster11_r[,-c(1:8)] <- lapply(westminster11_r[,-c(1:8)], function(x) as.nu
 #     ),
 #     .groups = "drop"
 #   )
-
-# westminster11_r$CDU_ID <- "city_westminster"
-# westminster11_r$GEO_CODE <- "city_westminster"
-# westminster11_r$GEO_LABEL <- "city_westminster"
-# westminster11_r$GEO_TYPE <- "city_westminster"
-# westminster11_r$GEO_TYP2 <- "city_westminster"
 
 westminster11_r <- westminster11_r %>% select(borough_year,borough,year,CDU_ID,GEO_CODE,GEO_LABEL,GEO_TYPE,GEO_TYP2,everything())
 
@@ -280,10 +280,8 @@ mismatchbourough <- df_all01_r %>% filter(!borough %in% df_all11_r$borough)
 df_all01_11 <- rbind(df_all01_r,df_all11_r)
 
 rm(list = setdiff(ls(), "df_all01_11"))
-# 2021
-# from long format must be combined
-# the recode2021 must be taken and transposed by borough
 
+# 2021
 
 df_all21 <- NULL   # accumulator
 
@@ -305,7 +303,7 @@ for (i in files) {
   df_all21 <- bind_rows(df_all21, df)
 }
 
-#richtames, croydon,  ealing,  havering
+#richtames, croydon,  ealing,  havering split and to be included separetely
 
 fileslist <- list.files("data_ward/other_include")
 df_other <- NULL   # accumulator
@@ -324,9 +322,7 @@ df_other <- bind_rows(df_other, other)
 
 df_all21 <- rbind(df_all21,df_other)
 
-# rm(list = setdiff(ls(), c("df_all01_r", "df_all01_11")))
-
-# City of London and Westminster 2021 to recode
+# City of London and Westminster 2021 recoded (12 NS-SeC categories to 10)
 
 rename_ethsoc12 <- function(df,ethnic,ethmaj,ethmin){
   df <- df %>%
@@ -400,7 +396,7 @@ df_all21 <- rename_ethsoc12(df_all21,"White: Other White" ,"white","other")
 df_all21 <- rename_ethsoc12(df_all21,"Other ethnic group: Arab" ,"other","arab")
 df_all21 <- rename_ethsoc12(df_all21, "Other ethnic group: Any other ethnic group","other","other") 
 
-# london 
+# City of London 
 
 london21 <- read.csv("data_ward/city_london_westminster/city_london_2021.csv", sep = ",",
                      stringsAsFactors = FALSE,
@@ -474,6 +470,7 @@ TRUE ~ recoded
 )
 }
 
+# Westminster
 westminster21 <- read.csv("data_ward/city_london_westminster/westminster_2021.csv", sep = ",",
                           stringsAsFactors = FALSE,
                           check.names = FALSE)
@@ -505,10 +502,7 @@ westminster21$borough_year <- "city_westminster_2021"
 westminster21$borough <- "city_westminster"
 westminster21$year <- "2021"
 
-
-
 # merge df_all21, citylondon21, westminster21
-
 # to sum same NS-SeC level across subcategories
 
 df_all21 <- df_all21 %>%
@@ -531,8 +525,6 @@ london21  <- london21 %>%
 westminster21 <- westminster21 %>% select(-c(`National Statistics Socio-economic Classification (NS-SeC) (10 categories)`,
                                    `National Statistics Socio-economic Classification (NS-SeC) (10 categories) Code`))
 
-
-#setdiff(names(df_all21),names(westminster21))
 setdiff(unique(df_all21$recoded),unique(westminster21$recoded))
 
 df_all21 <- rbind(df_all21,london21,westminster21)
@@ -573,20 +565,24 @@ df_final <- df_final %>%
     .groups = "drop"
   )
 
+# sanity check
 # check <- df_final %>%
 #   distinct(borough, year) %>%
 #   count(borough) %>%
 #   arrange(n)
 
+# Final dataset combined
 rm(list = setdiff(ls(), c("df_final")))
 
-# excluded subcategory others
-
+# excluded subcategory ethnicity "others"
 df_final <- df_final %>%
   select(
     -matches("^[^_]+_other_[^_]+$")
   )
 
+# Compute reference groups total ####
+
+# compute population of each neighborhood
 df_final <- df_final %>%
   group_by(borough_year) %>%
   mutate(
@@ -597,6 +593,7 @@ df_final <- df_final %>%
   )  %>%
   ungroup()
 
+# total ethnic major group
 total_group <- function(group) {
   
   new_var <- paste0("total_", group)
@@ -614,6 +611,7 @@ for (d in c("asian","white","black","mixed")) {
   df_final <- total_group(d)
 }
 
+# compute total specific ethnic group
 total_mingroup <- function(mingroup) {
   
   new_var <- paste0("total_", mingroup)
@@ -632,6 +630,7 @@ for (f in c("bangladeshi","indian","pakistani","chinese","african","carribean","
   df_final <- total_mingroup(f)
 }
 
+# compute total social status group
 total_status <- function(status) {
   
   new_var <- paste0("total_", status)
@@ -649,6 +648,9 @@ for (z in c("sc1","sc2","sc3","sc4","sc5","sc6","sc7")) {
   df_final <- total_status(z)
 }
 
+# compute proportion ethnic group X social status and 
+# proportion aggregated group (social class, major ethnic group) for each neighborhood
+# alert: it loops over names of variables, it is critical to do at this step (or set the names)
 
 frac_group <- function(fracgroup) {
   
@@ -664,6 +666,9 @@ for (t in names(df_final %>% select(- c(borough_year,borough,year,pop_borough)))
   df_final <- frac_group(t)
 }
 
+
+# compute the proportion of ethnic group within social status class
+# alert: it loops over selected names, it is critical to be done at this step (or set the names)
 frac_status <- function(substatus, classtat){
   
     new_var <- paste0("fracsub_",substatus)
@@ -680,6 +685,7 @@ for (p in c("_sc1","_sc2","_sc3","_sc4","_sc5","_sc6","_sc7")) {
   }
 }
 
+# Shannon ethnic entropy normalized for the specific ethnic groups (1 = max diversity, 0 = 1 group)
 df_final <- df_final %>%
   rowwise() %>%
   mutate(
@@ -695,6 +701,8 @@ df_final <- df_final %>%
   ) %>%
   ungroup()
 
+
+# Shannon social status entropy normalized for the specific ethnic groups (1 = max diversity, 0 = 1 group)
 df_final <- df_final %>%
   rowwise() %>%
   mutate(
@@ -708,8 +716,9 @@ df_final <- df_final %>%
   ungroup()
 
 
-# shapefiles
+# Figures for neighborhood concentration and shapefile ####
 
+# shapefile upload and preparation (used also for Moran's I)
 list_boroughsp <- read_excel("shapefile/match_boroughdf.xlsx")
 
 shapefile_df <- NULL
@@ -736,6 +745,7 @@ borough_borders <- shapefile_df %>%
   group_by(borough) %>%
   summarise(geometry = st_union(geometry), .groups = "drop")
 
+# Pictures of neighborhood compositions and Shannon enthropy
 
 picneighborhood <- function(variable, labelname,fold){
 ggplot(shapefile_df) +
@@ -763,8 +773,9 @@ for (w in  names(df_final %>% select(starts_with("frac") | starts_with("shannon"
   picneighborhood(w,"","picsconc")
 }
 
-# population composition
+# Plots for changes in the population ethnic composition and social classes ethnic composition ####
 
+# proportion ethnicity over status, aggregated at population level by year
 fracplotstatus <- df_final %>%
   select(
     borough_year,
@@ -805,15 +816,19 @@ ethss_prop <- fracplotstatus %>%
   geom_point(aes(color = specific)) +
   geom_line(aes(color = specific, group = specific)) +
   facet_wrap(~ socstatus, nrow = 1) +
+  scale_y_continuous(labels = scales::label_percent()) +
   labs(y = NULL,
        color = "Ethnic group") +
-  ggtitle("Ethnic proportion within social class") +
+  ggtitle("Ethnic composition within occupational class") +
   theme_bw() +
+  guides(
+    color = guide_legend(ncol = 2, byrow = TRUE)
+  ) +
   theme(#legend.position = "bottom",
         axis.text.x = element_text(angle = 45, hjust = 1))
-  ggsave(paste0("plotfacet/prop_sceth.jpg"), width = 9, height = 3)
+ggsave(paste0("plotfacet/prop_sceth.jpg"), width = 9, height = 3)
 
-# ethnic composition
+# Ethnic composition of the population, aggregated by year
   
 ethnicgroup <- c("bangladeshi","indian","pakistani","chinese","african","carribean","ewsnib","irish",
     "whiteasian","whiteblcarribean","whiteblafrican") 
@@ -865,18 +880,84 @@ ethpr_pop <- fracplotpop %>%
     breaks = c("2001", "2011", "2021"),
     expand = expansion(mult = c(0.02, 0.02))
   ) +
+  scale_y_continuous(labels = scales::label_percent()) +
   labs(
     x = "Year",
     y = NULL,
     color = "Ethnic group"
   ) + 
-  ggtitle("Ethnic proportion within population") +
-  # guides(
-  #   color = guide_legend(nrow = 2, byrow = TRUE)
-  # ) + 
-  theme_bw() # +  theme(legend.position = "bottom")
-  
-  
+  ggtitle("Ethnic composition of Greater London") + 
+  guides(
+    color = guide_legend(ncol = 2, byrow = TRUE)
+  ) +
+  theme_bw() 
+ ggsave(paste0("plotfacet/prop_ethpop.jpg"), width = 6, height = 3)  
+
+# Social class composition of the  whole population
+ 
+ # Ethnic composition of the population, aggregated by year
+ 
+ socialgroup <- c("sc1","sc2","sc3","sc4","sc5","sc6","sc7") 
+ 
+ fracplotpopsc <- df_final %>%
+   select(
+     borough_year,
+     borough,
+     year,
+     matches(
+       paste0("^total_(", paste(socialgroup, collapse = "|"), ")$")
+     )
+   ) %>%
+   group_by(
+     year
+   ) %>%
+   summarise(
+     across(where(is.numeric), ~ sum(.x, na.rm = TRUE)),
+     .groups = "drop"
+   ) %>%
+   mutate(
+     poptotal = rowSums(across(starts_with("total_")), na.rm = TRUE)
+   )
+ 
+ varspopsc <- names(fracplotpopsc %>%
+                    select(matches("^total")))
+ 
+ for (v in varspopsc) {
+   
+   fracplotpopsc[[paste0("frac_", v)]] <- fracplotpopsc[[v]] / fracplotpopsc[["poptotal"]]
+ }
+ 
+ scpr_pop <- fracplotpopsc %>%
+   select(year,
+          poptotal,
+          matches("^frac")) %>%
+   pivot_longer(
+     cols = matches("^frac"),
+     names_to = "variable",
+     values_to = "value"
+   ) %>%
+   mutate(
+     specific = sub(".*_", "", variable)
+   )  %>%
+   ggplot(aes(x = year, y = value)) +
+   geom_point(aes(color = specific)) +
+   geom_line(aes(color = specific, group = specific)) + 
+   scale_x_discrete(
+     breaks = c("2001", "2011", "2021"),
+     expand = expansion(mult = c(0.02, 0.02))
+   ) +
+   scale_y_continuous(labels = scales::label_percent()) +
+   labs(
+     x = "Year",
+     y = NULL,
+     color = "Ethnic group"
+   ) + 
+   ggtitle("Occupational class composition of Greater London") + 
+   guides(
+     color = guide_legend(ncol = 2, byrow = TRUE)
+   ) +
+   theme_bw() 
+ ggsave(paste0("plotfacet/prop_scpop.jpg"), width = 6, height = 3)  
   
 # sanity check
 # fracplot %>%
@@ -895,8 +976,11 @@ ethpr_pop <- fracplotpop %>%
 #   ) %>%
 #   filter(!near(total, 1))
 
-# distributions concentrations
-
+# Distribution of neighborhood compositions
+# function for boxplot distribution
+# it generates plots for each dimension, then combined
+# median(df_final$frac_total_white[df_final$year == 2021], na.rm = TRUE)
+ 
 boxplot_outliers <- function(var){
   
   outliers <- df_final %>%
@@ -911,13 +995,18 @@ boxplot_outliers <- function(var){
               aes(x = factor(year), y = .data[[var]])) +
     geom_boxplot(outlier.shape = NA) +
     geom_point(data = outliers, color = "red") +
+    # scale_y_continuous(
+    #   labels = scales::label_percent()
+    # ) +
     geom_text_repel(
       data = outliers,
       aes(label = borough),
       size = 3,
       max.overlaps = Inf
     ) +
-    ggtitle( str_to_title(sub("^frac_total_", "Neighborhood Proportion ", var))) +
+#    ggtitle( str_to_title(sub("^frac_total_", "Borough Percentage ", var))) +
+#    ggtitle("Shannon occupational diversity") +
+    ggtitle("Shannon ethnic diversity") +    
     labs(
       x = "Year",
       y = NULL
@@ -937,38 +1026,149 @@ boxplot_outliers <- function(var){
   p
 }
 
+# Ethnic composition population change
 ethnicgroup <- c("bangladeshi","indian","pakistani","chinese","african","carribean",
                  "ewsnib","irish", "whiteasian","whiteblcarribean","whiteblafrican")
 vars_ethnicgroup <- paste0("frac_total_",ethnicgroup) 
 
 plotsEC <- lapply(vars_ethnicgroup, boxplot_outliers)
 
-combined <-
-  wrap_plots(plotsEC, ncol = 3) /
+plotshannonethnic <- boxplot_outliers("shannon_ethnic_norm")
+
+combinedEC <-
+  wrap_plots(c(plotsEC,plotshannonethnic), ncol = 3) /
   ( ethpr_pop | plot_spacer()) +
   plot_layout(
-    heights = c(4, 1),
-    widths = c(1, 2, 1)
+    heights = c(3.5, 0.8),
+    widths = c(1, 1)
   )
-ggsave("plotfacet/combined_distribeth.jpg", width = 12, height = 13)
+ggsave("plotfacet/combined_distribethPOP.jpg", width = 11, height = 13)
 
-
+# Ethnic composition within social classes
 socstgroup <- c(paste0("total_sc", 1:7))
 vars_socstgroup <- paste0("frac_",socstgroup) 
 plotsSC <- lapply(vars_socstgroup, boxplot_outliers)
-combinedSC <- 
-  wrap_plots(plotsSC, ncol = 3) /
-  ( ethss_prop | plot_spacer()) +
+
+# combinedSC <-
+#   wrap_plots(plotsSC, ncol = 3) /
+#   wrap_plots(scpr_pop) /
+#   wrap_plots(ethss_prop ) +
+#   plot_layout(
+#     heights = c(3, 0.8,1),
+#     widths = c(2,0.3,0.3)
+#   )
+
+plotshannonsc <- boxplot_outliers("shannon_status_norm")
+
+scpr_short <- 
+  (scpr_pop | plot_spacer() |plot_spacer()) +
+  plot_layout(widths = c(0.8,0.8, 0.8))
+
+ethss_short <- 
+  (ethss_prop | plot_spacer() |plot_spacer()) +
+  plot_layout(widths = c(3,0.2, 0.2))
+
+
+combinedSC <-
+  wrap_plots(c(plotsSC,plotshannonsc), ncol = 3) /
+  scpr_short /
+  ethss_short +
   plot_layout(
-    heights = c(3, 0.8),
-    widths = c(1, 2)
+    heights = c(4, 1, 1)
   )
-ggsave("plotfacet/combined_distribethSC.jpg", width = 12, height = 13)
+ggsave("plotfacet/combined_distribethSC.jpg", width = 11, height = 13)
 
 
-# Duncan One vs Other
+# Moran's I global
 
-# function to feed with dataset, reference group from which other should be taken, group whose Duncan is computed
+# aggregate at the borough level per year, focus on the proportion variables and shannon
+borough_sf <- shapefile_df %>%
+  group_by(borough, year) %>%
+  summarise(
+    across(
+      c(starts_with("frac"), starts_with("shannon")),
+      first
+    ),
+    .groups = "drop"
+  )
+
+# Moran's I function per year and variable
+moranyear <- function(yearmoran, variablemoran) {
+  
+  dfmoran <- borough_sf %>%
+    filter(year == yearmoran)
+  
+  nb <- poly2nb(dfmoran)
+  lw <- nb2listw(nb)
+  
+  moran.test(
+    dfmoran[[variablemoran]],
+    lw
+  )
+}
+
+# to prepare the dataset: years and variables to compute over
+years <- c(2001, 2011, 2021)
+variablemoranidx <- c("shannon_ethnic_norm","shannon_status_norm",
+                      paste0("frac_total_",c("bangladeshi","indian","pakistani","chinese","african","carribean","ewsnib","irish",
+                                             "whiteasian","whiteblcarribean","whiteblafrican")),
+                      names(df_final %>% select(matches("^frac_.*_sc[1-7]$")))
+                      )
+
+dfm <- expand.grid(
+  year = years,
+  variable = variablemoranidx
+)
+
+dfm$MoransI <- NA_real_
+dfm$pvalue <- NA_real_
+
+# loop to compute the dataset over rows, each row is a variable per year, Morans' I between boroughs
+for (r in seq_len(nrow(dfm))) {
+  
+  dfm_moran <- moranyear(
+    yearmoran = dfm$year[r],
+    variablemoran = dfm$variable[r]
+  )
+  
+  dfm$MoransI[r] <- dfm_moran$estimate[[1]]
+  dfm$pvalue[r] <- dfm_moran$p.value
+}
+
+# to show p-value of Moran's I
+dfm <- dfm %>%
+  mutate(
+    sign = case_when(
+      pvalue <= 0.001 ~ "***",
+      pvalue <= 0.01  ~ "**",
+      pvalue <= 0.05  ~ "*",
+      TRUE ~ ""
+    )
+  )
+
+
+write_xlsx(dfm,"index_table/dfm_moran.xlsx")
+
+# Segregation indices for intersecting ethnicXclass categories ####
+
+# Functions
+
+# Duncan between ethnic and class groups
+duncan_two_groups <- function(df, subgroup, comparison_group) {
+  
+  x_i <- df[[subgroup]]
+  y_i <- df[[comparison_group]]
+  
+  X <- sum(x_i, na.rm = TRUE)
+  Y <- sum(y_i, na.rm = TRUE)
+  
+  if (X == 0 || Y == 0) return(NA_real_)
+  
+  0.5 * sum(abs((x_i / X) - (y_i / Y)), na.rm = TRUE)
+}
+
+
+# Duncan within-class and within-ethnic group
 duncan_comp <- function(df, other_group, subgroup) {
   
   x_i <- df[[subgroup]]
@@ -985,9 +1185,7 @@ duncan_comp <- function(df, other_group, subgroup) {
   )
 }
 
-# exposure index: percentage of reference group, e.g. % ethnicity/social class, it gives the % of reference group in the neighbohood
-# conditional e.g. total_pop = total_sc1, reference_group = subgroup = "asian_bangladeshi_sc1", the conditional probability
-
+# Exposure index
 exposure_index <- function(df, subgroup, reference_group,  total_pop ) {
   
   x_i <- df[[subgroup]]
@@ -1006,7 +1204,7 @@ exposure_index <- function(df, subgroup, reference_group,  total_pop ) {
   
 } 
 
-# exposure to diversity weighted by the distribution of the subgroup
+# Diversity index (weighted ethnic and class Shannon computed before)
 diversity_exposure <- function(df,
                                subgroup,
                                diversity_var) {
@@ -1024,19 +1222,8 @@ diversity_exposure <- function(df,
   )
 }
 
-duncan_two_groups <- function(df, subgroup, comparison_group) {
-
-  x_i <- df[[subgroup]]
-  y_i <- df[[comparison_group]]
-
-  X <- sum(x_i, na.rm = TRUE)
-  Y <- sum(y_i, na.rm = TRUE)
-
-  if (X == 0 || Y == 0) return(NA_real_)
-
-  0.5 * sum(abs((x_i / X) - (y_i / Y)), na.rm = TRUE)
-}
- 
+# Function to assemble the indices for each group, for each year
+# it writes down for each group, and df_index for the assembled dataset, as R object only df_index
 
 index_groups <- function(group_tocompute){
 
@@ -1054,22 +1241,23 @@ results_q <- expand.grid(
   socstatus = q
 )
 
-duncan_ethown <- "DuncanEthOwn" 
-results_q[[duncan_ethown]] <- NA_real_
-duncan_ethoth <- "DuncanEthOth"
-results_q[[duncan_ethoth]] <- NA_real_
-duncan_scown <- "DuncanScOwn"
-results_q[[duncan_scown]] <- NA_real_
-duncan_scoth <- "DuncanScOth"
-results_q[[duncan_scoth]] <- NA_real_
-exposure_eth <- "ExpsEth"
+
+duncan_eth <- "DuncanEth"
+results_q[[duncan_eth]] <- NA_real_
+duncan_ethsc <- "DuncanEthSc" 
+results_q[[duncan_ethsc]] <- NA_real_
+duncan_sc <- "DuncanSc"
+results_q[[duncan_sc]] <- NA_real_
+duncan_sceth <- "DuncanScEth"
+results_q[[duncan_sceth]] <- NA_real_ 
+exposure_eth <- "ExpEth"
 results_q[[exposure_eth]] <- NA_real_
-isolation_scovereth <- "IsScCondEth"
-results_q[[isolation_scovereth]] <- NA_real_
-exposure_sc <- "ExpsSC"
+exposure_ethsc <- "ExpEthSc"
+results_q[[exposure_ethsc]] <- NA_real_
+exposure_sc <- "ExpSC"
 results_q[[exposure_sc]] <- NA_real_
-isolation_ethoversc <- "IsEthCondSc"
-results_q[[isolation_ethoversc]] <- NA_real_
+exposure_sceth <- "ExpScEth"
+results_q[[exposure_sceth]] <- NA_real_
 diveth <- "ShanEth"
 results_q[[diveth]] <- NA_real_
 divstatus <- "ShanStatus"
@@ -1084,33 +1272,30 @@ for (r in seq_len(nrow(results_q))) {
       not_sc = pop_borough - .data[[paste0("total_", q)]]
     )
   
-  # df_y <- df_final %>%
-  #   filter(year == results_q$year[r])
-  
-  results_q[[duncan_ethown]][r] <- duncan_comp(
-    df_y,
-    other_group = paste0("total_", sub("^[^_]*_", "", group_tocompute)),
-    subgroup = results_q$group[r]
-  )
-  
-  results_q[[duncan_ethoth]][r] <- duncan_two_groups(
+  results_q[[duncan_eth]][r] <- duncan_two_groups(
     df_y,
     comparison_group = "not_ethnic",
     subgroup = results_q$group[r]
   )
   
-  results_q[[duncan_scown]][r] <- duncan_comp(
+  results_q[[duncan_ethsc]][r] <- duncan_comp(
     df_y,
-    other_group = paste0("total_", q),
+    other_group = paste0("total_", sub("^[^_]*_", "", group_tocompute)),
     subgroup = results_q$group[r]
   )
   
-  results_q[[duncan_scoth]][r] <- duncan_two_groups(
+  results_q[[duncan_sc]][r] <- duncan_two_groups(
     df_y ,
     comparison_group = "not_sc",
     subgroup = results_q$group[r]
   )
-  
+   
+  results_q[[duncan_sceth]][r] <- duncan_comp(
+    df_y,
+    other_group = paste0("total_", q),
+    subgroup = results_q$group[r]
+  )
+   
   results_q[[exposure_eth]][r] <- exposure_index(
     df_y,
     subgroup =  results_q$group[r],
@@ -1118,7 +1303,7 @@ for (r in seq_len(nrow(results_q))) {
     reference_group = paste0("total_", sub("^[^_]*_", "", group_tocompute))
   )
   
-  results_q[[isolation_scovereth]][r] <- exposure_index(
+  results_q[[exposure_ethsc]][r] <- exposure_index(
     df_y,
     subgroup =  results_q$group[r],
     total_pop = paste0("total_", sub("^[^_]*_", "", group_tocompute)),
@@ -1132,13 +1317,12 @@ for (r in seq_len(nrow(results_q))) {
     reference_group = paste0("total_", q)
   )
   
-  results_q[[isolation_ethoversc]][r] <- exposure_index(
+  results_q[[exposure_sceth]][r] <- exposure_index(
     df_y,
     subgroup =  results_q$group[r],
     total_pop = paste0("total_", q),
     reference_group = results_q$group[r]
   )
-  
   
   results_q[[diveth]][r] <- diversity_exposure(
     df_y,
@@ -1162,7 +1346,8 @@ results_final
 }
 
 
-# 
+# Figure for segregation indices
+
 df_list <- list()
 for (n in c(
   "asian_bangladeshi",
@@ -1183,8 +1368,9 @@ for (n in c(
 df_index <- bind_rows(df_list, .id = "major_minor")
 write.csv(df_index,file="index_table/df_index.csv", row.names = F)
 
+# function to plot customized index (x-axis = year, y = index, group = group1, fecet = facetvar)
 
-plotfig <- function(var1,cross1, facetvar) {
+plotfig <- function(var1,group1, facetvar) {
   
   p <- df_index %>%
     # mutate(
@@ -1195,8 +1381,8 @@ plotfig <- function(var1,cross1, facetvar) {
     #   )
     # ) %>%
     ggplot(aes(x = year, y = .data[[var1]])) +
-    geom_point(aes(color =  .data[[cross1]], group = .data[[cross1]] )) +
-    geom_line(aes(color = .data[[cross1]], group = .data[[cross1]])) +
+    geom_point(aes(color =  .data[[group1]], group = .data[[group1]] )) +
+    geom_line(aes(color = .data[[group1]], group = .data[[group1]])) +
     scale_x_continuous(breaks = c(2001, 2011, 2021)) +
     # scale_color_brewer(palette = "RdYlBu") +
     # scale_fill_brewer(palette = "RdYlBu") +
@@ -1207,7 +1393,7 @@ plotfig <- function(var1,cross1, facetvar) {
     )
  
   ggsave(
-    filename = paste0("plotfacet/", var1, "_", cross1, "_" ,facetvar,  ".jpg"),
+    filename = paste0("plotfacet/", var1, "_", group1, "_" ,facetvar,  ".jpg"),
     plot = p,
     width = 13
   )
@@ -1215,108 +1401,29 @@ plotfig <- function(var1,cross1, facetvar) {
   p
 }
 
-plotfig(var1 = "DuncanEthOwn",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanEthOwn",cross1 = "ethnicspecific",facetvar = "socstatus")
-plotfig(var1 = "DuncanScOwn",cross1 = "ethnicspecific",facetvar = "socstatus")
-plotfig(var1 = "DuncanScOwn",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpsEth",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpsSC",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "IsScCondEth",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "IsEthCondSc",cross1 = "ethnicspecific",facetvar = "socstatus")
-plotfig(var1 = "IsEthCondSc",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "IsEthCondSc",cross1 = "ethnicspecific",facetvar = "socstatus")
-plotfig(var1 = "ShanEth",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ShanStatus",cross1 = "ethnicspecific",facetvar = "socstatus")
-plotfig(var1 = "ShanStatus",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ShanStatus",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanScOth",cross1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanEthOth",cross1 = "socstatus",facetvar = "ethnicspecific")
+# Here every single index can be computed
 
+plotfig(var1 = "DuncanEth",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "DuncanEthSc",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "DuncanSc",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "DuncanScEth",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ExpEth",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ExpSC",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ExpEthSc",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ExpScEth",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ShanEth",group1 = "socstatus",facetvar = "ethnicspecific")
+plotfig(var1 = "ShanStatus",group1 = "socstatus",facetvar = "ethnicspecific")
 
+# sanity check
 # to check distribution for each subgroup
-subgroup <- "asian_chinese_sc1"
-
-df_final %>%
-filter(year == 2021) %>%
-arrange(desc(.data[[subgroup]])) %>%
-select(borough, all_of(subgroup))
-
+# subgroup <- "asian_chinese_sc1"
+# df_final %>%
+# filter(year == 2021) %>%
+# arrange(desc(.data[[subgroup]])) %>%
+# select(borough, all_of(subgroup))
 
 
-# Moran's I global
 
-borough_sf <- shapefile_df %>%
-  group_by(borough, year) %>%
-  summarise(
-    across(
-      c(starts_with("frac"), starts_with("shannon")),
-      first
-    ),
-    .groups = "drop"
-  )
-
-moranyear <- function(yearmoran, variablemoran) {
-  
-  dfmoran <- borough_sf %>%
-    filter(year == yearmoran)
-  
-  nb <- poly2nb(dfmoran)
-  lw <- nb2listw(nb)
-  
-  moran.test(
-    dfmoran[[variablemoran]],
-    lw
-  )
-}
-
-years <- c(2001, 2011, 2021)
-variablemoranidx <- c("shannon_ethnic_norm","shannon_status_norm",paste0("frac_total_sc", 1:7),
-                           paste0("frac_total_",c("bangladeshi","indian","pakistani","chinese","african","carribean","ewsnib","irish",
-                                                  "whiteasian","whiteblcarribean","whiteblafrican")))
-
-dfm <- expand.grid(
-  year = years,
-  variable = variablemoranidx
-)
-
-dfm$MoransI <- NA_real_
-dfm$pvalue <- NA_real_
-
-for (r in seq_len(nrow(dfm))) {
-  
-  dfm_moran <- moranyear(
-    yearmoran = dfm$year[r],
-    variablemoran = dfm$variable[r]
-  )
-  
-  dfm$MoransI[r] <- dfm_moran$estimate[[1]]
-  dfm$pvalue[r] <- dfm_moran$p.value
-}
-
-dfm
-dfm <- dfm %>%
-  mutate(
-    sign = case_when(
-      pvalue <= 0.05 ~ "*",
-      pvalue > 0.05 ~ ""
-    )
-  )
-
-
-write_xlsx(dfm,"dfm_moran.xlsx")
-
-moranyear(2001,"frac_total_sc3") 
-
-
-for (r in seq_len(nrow(dfm))) {
-  
-  test <- moranyear(
-    yearmoran = dfm[["year"]][r],
-    variablemoran = dfm[["variable"]][r]
-  )
-  
-  dfm[[moran_computed]][r] <- test$estimate[[1]]
-}
 
 
 # Moran's I local
