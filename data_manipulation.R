@@ -1346,7 +1346,7 @@ results_final
 }
 
 
-# Figure for segregation indices
+# Tables for segregation indices
 
 df_list <- list()
 for (n in c(
@@ -1366,27 +1366,22 @@ for (n in c(
  
 }
 df_index <- bind_rows(df_list, .id = "major_minor")
-write.csv(df_index,file="index_table/df_index.csv", row.names = F)
+write_xlsx(df_index,"index_table/df_index.xlsx")
 
 # function to plot customized index (x-axis = year, y = index, group = group1, fecet = facetvar)
 
-plotfig <- function(var1,group1, facetvar) {
+plotfig <- function(var1,group1, facetvar,ylabb,colorlabb) {
   
   p <- df_index %>%
-    # mutate(
-    #   socstatus = factor(
-    #     socstatus,
-    #     levels = paste0("sc", 1:7),
-    #     ordered = TRUE
-    #   )
-    # ) %>%
     ggplot(aes(x = year, y = .data[[var1]])) +
     geom_point(aes(color =  .data[[group1]], group = .data[[group1]] )) +
     geom_line(aes(color = .data[[group1]], group = .data[[group1]])) +
-    scale_x_continuous(breaks = c(2001, 2011, 2021)) +
-    # scale_color_brewer(palette = "RdYlBu") +
-    # scale_fill_brewer(palette = "RdYlBu") +
+    scale_x_continuous(breaks = c(2001, 2011, 2021)) + 
     facet_wrap(vars(.data[[facetvar]]), nrow = 1) +
+    labs(
+      y = ylabb,
+      colour = colorlabb
+    ) +
     theme_bw() +
     theme(
       axis.text.x = element_text(angle = 45, hjust = 1)
@@ -1401,18 +1396,33 @@ plotfig <- function(var1,group1, facetvar) {
   p
 }
 
-# Here every single index can be computed
+# Here every single index can be plotted
 
-plotfig(var1 = "DuncanEth",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanEthSc",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanSc",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "DuncanScEth",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpEth",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpSC",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpEthSc",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ExpScEth",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ShanEth",group1 = "socstatus",facetvar = "ethnicspecific")
-plotfig(var1 = "ShanStatus",group1 = "socstatus",facetvar = "ethnicspecific")
+ethduncan <- plotfig(var1 = "DuncanEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Duncan", colorlabb = "Social Status")
+ethscduncan <- plotfig(var1 = "DuncanEthSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-ethnic Class Duncan", colorlabb = "Social Status")
+socduncan <- plotfig(var1 = "DuncanSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Duncan", colorlabb = "Social Status")
+scethduncan <- plotfig(var1 = "DuncanScEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-class Ethnic Duncan", colorlabb = "Social Status")
+plotfig(var1 = "ExpEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Exposure", colorlabb = "Social Status")
+plotfig(var1 = "ExpSC",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Exposure", colorlabb = "Social Status")
+plotfig(var1 = "ExpEthSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-ethnic Class Exposure", colorlabb = "Social Status")
+plotfig(var1 = "ExpScEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-class Ethnic Exposure", colorlabb = "Social Status")
+shaneth <- plotfig(var1 = "ShanEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Shannon", colorlabb = "Social Status")
+shansc <- plotfig(var1 = "ShanStatus",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Shannon", colorlabb = "Social Status")
+
+(ethduncan / socduncan) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+ggsave("plotfacet/ethsoc_duncan.jpg", width = 12, height = 8)
+
+(ethscduncan / scethduncan) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+ggsave("plotfacet/within_duncan.jpg", width = 12, height = 8)
+
+(shaneth / shansc) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+ggsave("plotfacet/shannonwithin.jpg", width = 12, height = 8)
 
 # sanity check
 # to check distribution for each subgroup
