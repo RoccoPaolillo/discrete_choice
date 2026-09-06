@@ -1368,6 +1368,138 @@ for (n in c(
 df_index <- bind_rows(df_list, .id = "major_minor")
 write_xlsx(df_index,"index_table/df_index.xlsx")
 
+# Exposure for individual subgroups
+
+eth_groups <- c(
+  "asian_bangladeshi",
+  "asian_indian",
+  "asian_pakistani",
+  "asian_chinese",
+  "black_african",
+  "black_carribean",
+  "white_ewsnib",
+  "white_irish",
+  "mixed_whiteasian",
+  "mixed_whiteblcarribean",
+  "mixed_whiteblafrican"
+)
+
+social_classes <- paste0("sc", 1:7)
+
+df_groups <- unlist(
+  lapply(eth_groups, function(x) paste0(x, "_", social_classes))
+)
+
+years <- c(2001, 2011, 2021)
+
+df_groupexp <- expand.grid(
+  year = years,
+  subgroup = df_groups,
+  reference_group = df_groups,
+  stringsAsFactors = FALSE
+)
+
+df_groupexp$exposure <- mapply(
+  function(y, i, p) {
+    
+    df_y <- df_final %>%
+      filter(year == y)
+    
+    exposure_index(
+      df_y,
+      i,
+      p,
+      "pop_borough"
+    )
+  },
+  df_groupexp$year,
+  df_groupexp$subgroup,
+  df_groupexp$reference_group
+)
+
+# sanity
+# df_groupexp %>% group_by(year, subgroup) %>% summarise(test = sum(exposure))
+
+df_groupexp <- df_groupexp %>%
+  mutate(
+    
+    # simplify focal subgroup
+    subgroup_simple = subgroup %>%
+      str_remove("^asian_") %>%
+      str_remove("^black_") %>%
+      str_remove("^white_") %>%
+      str_remove("^mixed_"),
+    
+    macro_eth = subgroup %>%
+      str_remove("^asian_") %>%
+      str_remove("^black_") %>%
+      str_remove("^white_") %>%
+      str_remove("^mixed_") %>%
+      str_remove("_sc[1-7]$") %>%
+      str_to_title(),
+    
+    macro_sc = subgroup %>%
+      str_extract("sc[1-7]$") %>%
+      str_to_title(),
+    
+    # identify ethnicity of reference group
+    ethnic_group_ref = reference_group %>%
+      str_remove("_sc[1-7]$") %>%
+      str_remove("^asian_") %>%
+      str_remove("^black_") %>%
+      str_remove("^white_") %>%
+      str_remove("^mixed_") %>%
+      str_to_title(),
+    
+    sc_group_ref = reference_group %>%
+      str_extract("sc[1-7]$") %>%
+      str_to_title()
+    
+  ) %>%
+  group_by(
+    year,
+    subgroup_simple,
+    macro_eth,
+    macro_sc,
+    reference_group,
+    ethnic_group_ref,
+    sc_group_ref
+  ) %>%
+  summarise(
+    exposure_reference_group = sum(exposure, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+write_xlsx(df_groupexp,"index_table/df_groupexp.xlsx")
+
+df_groupexpeth <- df_groupexp %>%
+  group_by(
+    year,
+    subgroup_simple,
+    macro_eth,
+    macro_sc, 
+    ethnic_group_ref 
+  ) %>%
+  summarise(
+    exposure_reference_ethnic = sum(exposure_reference_group, na.rm = TRUE),
+    .groups = "drop"
+  )
+write_xlsx(df_groupexpeth,"index_table/df_groupexpeth.xlsx")
+
+df_groupexpsc <- df_groupexp %>%
+  group_by(
+    year,
+    subgroup_simple,
+    macro_eth,
+    macro_sc, 
+    sc_group_ref 
+  ) %>%
+  summarise(
+    exposure_reference_sc = sum(exposure_reference_group, na.rm = TRUE),
+    .groups = "drop"
+  )
+write_xlsx(df_groupexpsc,"index_table/df_groupexpsc.xlsx")
+
 # function to plot customized index (x-axis = year, y = index, group = group1, fecet = facetvar)
 
 plotfig <- function(var1,group1, facetvar,ylabb,colorlabb) {
@@ -1402,10 +1534,10 @@ ethduncan <- plotfig(var1 = "DuncanEth",group1 = "socstatus",facetvar = "ethnics
 ethscduncan <- plotfig(var1 = "DuncanEthSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-ethnic Class Duncan", colorlabb = "Social Status")
 socduncan <- plotfig(var1 = "DuncanSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Duncan", colorlabb = "Social Status")
 scethduncan <- plotfig(var1 = "DuncanScEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-class Ethnic Duncan", colorlabb = "Social Status")
-plotfig(var1 = "ExpEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Exposure", colorlabb = "Social Status")
-plotfig(var1 = "ExpSC",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Exposure", colorlabb = "Social Status")
-plotfig(var1 = "ExpEthSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-ethnic Class Exposure", colorlabb = "Social Status")
-plotfig(var1 = "ExpScEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-class Ethnic Exposure", colorlabb = "Social Status")
+ethexp <- plotfig(var1 = "ExpEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Exposure", colorlabb = "Social Status")
+scexp <- plotfig(var1 = "ExpSC",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Exposure", colorlabb = "Social Status")
+ethscexp <- plotfig(var1 = "ExpEthSc",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-ethnic Class Exposure", colorlabb = "Social Status")
+scethexp <- plotfig(var1 = "ExpScEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Within-class Ethnic Exposure", colorlabb = "Social Status")
 shaneth <- plotfig(var1 = "ShanEth",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Ethnic Shannon", colorlabb = "Social Status")
 shansc <- plotfig(var1 = "ShanStatus",group1 = "socstatus",facetvar = "ethnicspecific", ylabb = "Class Shannon", colorlabb = "Social Status")
 
@@ -1419,10 +1551,21 @@ ggsave("plotfacet/ethsoc_duncan.jpg", width = 12, height = 8)
   theme(legend.position = "bottom")
 ggsave("plotfacet/within_duncan.jpg", width = 12, height = 8)
 
+(ethexp / scexp) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+ggsave("plotfacet/exposure_both.jpg", width = 12, height = 6)
+
+(ethscexp / scethexp) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "bottom")
+ggsave("plotfacet/exposure_within.jpg", width = 12, height = 6)
+
 (shaneth / shansc) +
   plot_layout(guides = "collect") &
   theme(legend.position = "bottom")
 ggsave("plotfacet/shannonwithin.jpg", width = 12, height = 8)
+
 
 # sanity check
 # to check distribution for each subgroup
@@ -1431,6 +1574,43 @@ ggsave("plotfacet/shannonwithin.jpg", width = 12, height = 8)
 # filter(year == 2021) %>%
 # arrange(desc(.data[[subgroup]])) %>%
 # select(borough, all_of(subgroup))
+
+
+
+# df_eth_exp %>% 
+#   filter(macro_eth == "African") %>%
+#   ggplot(aes(x = subgroup_simple, y = exposure)) +
+#   geom_col(aes(fill = ethnic_group_ref, color = "black")) + 
+#   coord_flip() +
+#   facet_wrap(~ year, scales = "free_y") +
+#   theme_bw()
+# 
+# df_eth_exp2 <- df_eth_exp %>% 
+# #  filter(ethnic_group_ref != "Ewsnib") %>%
+#   group_by(subgroup_simple, year) %>% 
+#   slice_max(
+#     order_by = exposure,
+#     n = 7,
+#     with_ties = FALSE
+#   ) %>% 
+#   ungroup()
+# 
+# df_eth_exp2 %>%  
+#   filter(macro_eth == "Bangladeshi") %>%
+#   ggplot(aes(x = subgroup_simple, y = exposure)) +
+#   geom_col(aes(fill = reference_group, color = "black")) + 
+#   coord_flip() +
+#   geom_text(
+#     aes(
+#       label = round(exposure, 3),
+#       group = reference_group
+#     ),
+#     position = position_stack(vjust = 0.5),
+#     size = 3
+#   ) +
+#   facet_wrap(~ year, scales = "free_y") +
+#   theme_bw()
+
 
 
 
